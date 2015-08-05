@@ -3,7 +3,7 @@ title: MGMT6963 Technology Fundamentals for Business Analytics
 email: kuruzj@rpi.edu
 description: > # this means to ignore newlines until "baseurl:"
   This is the official course website for the Technology 
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "http://rpi-analytics.github.io/MGMT6963-2015" # the subpath of your site, e.g. /blog/
 url: "http://rpi-analytics.github.io/MGMT6963-2015" # the base hostname & protocol for your site
 twitter_username: jasonkuruzovich
 github_username:  jkuruzovich
