@@ -14,11 +14,18 @@
       </a>
 
       <div class="trigger">
-        {% for page in site.pages %}
+          <a class="page-link" href="{{ site.baseurl }}">Home</a>
+          <a class="page-link" href="{{ site.discussion_url }}">{{ site.discussion }}</a>
+          <a class="page-link" href="{{ site.assignment_url }}">{{ site.assignment }}</a>
+          <a class="page-link" href="{{ site.syllabus_url }}">{{ site.syllabus }}</a>
+          <a class="page-link" href="{{ site.schedule_url }}">{{ site.schedule }}</a>
+          <a class="page-link" href="{{ site.projects_url }}">{{ site.projects }}</a>
+          <a class="page-link" href="{{ site.resources_url }}">{{ site.resources }}</a>
+       <!-- {% for page in site.pages %}
           {% if page.title %}
           <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
           {% endif %}
-        {% endfor %}
+        {% endfor %} -->
       </div>
     </nav>
 
