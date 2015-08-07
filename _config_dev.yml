@@ -3,7 +3,7 @@ title: "MGMT6963 Technology Fundamentals for Business Analytics"
 email: "kuruzj@rpi.edu"
 description: "This is the official course website for the Technology Fundamentals of Business Analyitics Course"
 
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: "/MGMT6963-2015" # the subpath of your site, e.g. /blog/
 url: "http://0.0.0.0:4000" # the base hostname & protocol for your site
 twitter_username: jasonkuruzovich
 github_username:  rpi-analytics
