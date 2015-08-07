@@ -10,8 +10,10 @@ github_username:  rpi-analytics
 
 
 #Header Menu URL
+
+#Header Menu URL
 menu1: "Syllabus"
-menu1_url: "syllabus"
+menu1_url: "/syllabus"
 #If you aren't using Piazza, just comment this out.
 menu2: "Piazza"
 menu2_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
@@ -19,13 +21,14 @@ menu2_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
 menu3: "Blackboard"
 menu3_url: "https://lms.rpi.edu"
 menu4: "Schedule"
-menu4_url: "schedule"
+menu4_url: "/schedule"
 menu5: "Projects"
-menu5_url: "projects"
+menu5_url: "/projects"
 menu6: "Resources"
-menu6_url: "resources"
+menu6_url: "/resources"
 #menu7: "Resources"
 #menu7_url: "/resources"
+
 
 # Build settings
 markdown: kramdown
