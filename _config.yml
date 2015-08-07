@@ -1,19 +1,19 @@
-# Site settings
-title: MGMT6963 Technology Fundamentals for Business Analytics
-email: kuruzj@rpi.edu
-description: > # this means to ignore newlines until "baseurl:"
-  This is the official course website for the Technology 
-baseurl: "/MGMT6963-2015" # the subpath of your site, e.g. /blog/
 url: "http://rpi-analytics.github.io" # the base hostname & protocol for your site
-twitter_username: jasonkuruzovich
+#URL
+url: "http://0.0.0.0:4000" # the base hostname & protocol for your sitetwitter_username: jasonkuruzovich
+include: ['_pages']
+
+# Site settings
+title: "MGMT6963 Technology Fundamentals for Business Analytics"
+email: "kuruzj@rpi.edu"
+description: "This is the official course website for the Technology Fundamentals of Business Analyitics Course"
+baseurl: "/MGMT6963-2015" # the subpath of your site, e.g. /blog/
 github_username:  rpi-analytics
 
 
-#Header Menu URL
-
-#Header Menu URL
+#Header Menu Settings
 menu1: "Syllabus"
-menu1_url: "/syllabus"
+menu1_url: "/assets/MGMT6963_Fall2015_syllabus.pdf"
 #If you aren't using Piazza, just comment this out.
 menu2: "Piazza"
 menu2_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
@@ -21,15 +21,17 @@ menu2_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
 menu3: "Blackboard"
 menu3_url: "https://lms.rpi.edu"
 menu4: "Schedule"
-menu4_url: "/schedule"
+menu4_url: "/pages/schedule"
 menu5: "Projects"
-menu5_url: "/projects"
+menu5_url: "/pages/projects"
 menu6: "Resources"
-menu6_url: "/resources"
+menu6_url: "/pages/resources"
 #menu7: "Resources"
 #menu7_url: "/resources"
 
 
+
 # Build settings
 markdown: kramdown
-include: ['_pages']
+kramdown:
+  input: GFM
