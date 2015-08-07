@@ -15,13 +15,13 @@
 
       <div class="trigger">
           <a class="page-link" href="{{  site.baseurl  }}">Home</a>
-          {% if site.menu1 %} <a class="page-link" href="{{ site.url }}/{{ site.menu1_url| prepend: site.baseurl }}">{{ site.menu1 }}</a> {% endif %}
+          {% if site.menu1 %} <a class="page-link" href="{{ site.url }}{{ site.menu1_url| prepend: site.baseurl }}">{{ site.menu1 }}</a> {% endif %}
           {% if site.menu2 %} <a class="page-link" href="{{ site.menu2_url }}">{{ site.menu2 }}</a> {% endif %}
           {% if site.menu3 %} <a class="page-link" href="{{ site.menu3_url }}">{{ site.menu3 }}</a> {% endif %}
-          {% if site.menu4 %} <a class="page-link" href="{{ site.url }}/{{ site.menu4_url | prepend: site.baseurl }}">{{ site.menu4 }}</a> {% endif %}
-          {% if site.menu5 %} <a class="page-link" href="{{ site.url }}/{{ site.menu5_url | prepend: site.baseurl }}">{{ site.menu5 }}</a> {% endif %}
-          {% if site.menu6 %} <a class="page-link" href="{{ site.url }}/{{ site.menu6_url | prepend: site.baseurl }}">{{ site.menu6 }}</a> {% endif %}
-          {% if site.menu7 %} <a class="page-link" href="{{ site.url }}/{{ site.menu7_url | prepend: site.baseurl }}">{{ site.menu7 }}</a> {% endif %}
+          {% if site.menu4 %} <a class="page-link" href="{{ site.url }}{{ site.menu4_url | prepend: site.baseurl }}">{{ site.menu4 }}</a> {% endif %}
+          {% if site.menu5 %} <a class="page-link" href="{{ site.url }}{{ site.menu5_url | prepend: site.baseurl }}">{{ site.menu5 }}</a> {% endif %}
+          {% if site.menu6 %} <a class="page-link" href="{{ site.url }}{{ site.menu6_url | prepend: site.baseurl }}">{{ site.menu6 }}</a> {% endif %}
+          {% if site.menu7 %} <a class="page-link" href="{{ site.url }}{{ site.menu7_url | prepend: site.baseurl }}">{{ site.menu7 }}</a> {% endif %}
 
        <!-- {% for page in site.pages %}
           {% if page.title %}

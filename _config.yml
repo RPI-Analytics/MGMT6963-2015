@@ -32,3 +32,4 @@ menu6_url: "/resources"
 
 # Build settings
 markdown: kramdown
+include: ['_pages']
