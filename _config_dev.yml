@@ -1,16 +1,34 @@
 # Site settings
-title: MGMT6963 Technology Fundamentals for Business Analytics
-email: kuruzj@rpi.edu
-description: > # this means to ignore newlines until "baseurl:"
-  This is the official course website for the Technology 
+title: "MGMT6963 Technology Fundamentals for Business Analytics"
+email: "kuruzj@rpi.edu"
+description: "This is the official course website for the Technology Fundamentals of Business Analyitics Course"
+
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://0.0.0.0:4000" # the base hostname & protocol for your site
 twitter_username: jasonkuruzovich
-github_username:  jkuruzovich
-discussion_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
-discussion: "Piazza"
-assignment_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
-assignment: "Blackboard"
+github_username:  rpi-analytics
+
+
+#Header Menu URL
+menu1: "Syllabus"
+menu1_url: "syllabus"
+#If you aren't using Piazza, just comment this out.
+menu2: "Piazza"
+menu2_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
+#This should be link to LMS. If not using LMS, comment out.
+menu3: "Blackboard"
+menu3_url: "https://lms.rpi.edu"
+menu4: "Schedule"
+menu4_url: "schedule"
+menu5: "Projects"
+menu5_url: "projects"
+menu6: "Resources"
+menu6_url: "resources"
+#menu7: "Resources"
+#menu7_url: "/resources"
+
+
 
 # Build settings
 markdown: kramdown
+include: ['_pages']

@@ -6,7 +6,7 @@ description: > # this means to ignore newlines until "baseurl:"
 baseurl: "http://rpi-analytics.github.io/MGMT6963-2015" # the subpath of your site, e.g. /blog/
 url: "http://rpi-analytics.github.io/MGMT6963-2015" # the base hostname & protocol for your site
 twitter_username: jasonkuruzovich
-github_username:  jkuruzovich
+github_username:  rpi-analytics
 discussion_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
 discussion: "Piazza"
 assignment_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"

@@ -2,12 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MGMT6963 Technology Fundamentals for Business Analytics</title>
-    <description>This is the official course website for the Technology 
-</description>
+    <description>This is the official course website for the Technology Fundamentals of Business Analyitics Course</description>
     <link>http://0.0.0.0:4000/</link>
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 05 Aug 2015 16:37:28 -0400</pubDate>
-    <lastBuildDate>Wed, 05 Aug 2015 16:37:28 -0400</lastBuildDate>
+    <pubDate>Fri, 07 Aug 2015 10:15:20 -0400</pubDate>
+    <lastBuildDate>Fri, 07 Aug 2015 10:15:20 -0400</lastBuildDate>
     <generator>Jekyll v2.4.0</generator>
     
       <item>
