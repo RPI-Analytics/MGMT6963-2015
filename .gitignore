@@ -7,4 +7,4 @@ coverage
 .ruby-version
 .ruby-gemset
 .sass-cache
-.idea/*
+.idea/
