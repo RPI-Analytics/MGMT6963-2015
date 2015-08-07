@@ -1,5 +1,5 @@
 Gemfile.lock
-_site/*
+_site/
 .bundle/
 .DS_Store
 site/_site/
@@ -7,3 +7,4 @@ coverage
 .ruby-version
 .ruby-gemset
 .sass-cache
+.idea/*
