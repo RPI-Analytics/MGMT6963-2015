@@ -27,6 +27,5 @@ menu6_url: "resources"
 #menu7: "Resources"
 #menu7_url: "/resources"
 
-
 # Build settings
 markdown: kramdown
