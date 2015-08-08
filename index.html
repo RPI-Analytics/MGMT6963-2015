@@ -4,7 +4,7 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
+  <h1 class="page-heading">Classes</h1>
 
   <ul class="post-list">
     {% for post in site.posts %}
@@ -15,6 +15,27 @@ layout: default
           <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
         </h2>
       </li>
+      <li>
+          <table style="width:75%">
+              <tr>
+                  <td> <h2>Readings</h2></td>
+                  <td><h2>Assignments</h2></td>
+              </tr>
+              <tr>
+                  <td>{{ post.readings }}</td>
+                  <td> {{ post.assignment }}</td>
+              </tr>
+          </table>
+
+
+      </li>
+      <li>
+
+
+      </li>
+
+
+
     {% endfor %}
   </ul>
 

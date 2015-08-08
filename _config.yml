@@ -1,6 +1,4 @@
 url: "http://rpi-analytics.github.io" # the base hostname & protocol for your site
-#URL
-url: "http://0.0.0.0:4000" # the base hostname & protocol for your sitetwitter_username: jasonkuruzovich
 include: ['_pages']
 
 # Site settings
@@ -8,8 +6,8 @@ title: "MGMT6963 Technology Fundamentals for Business Analytics"
 email: "kuruzj@rpi.edu"
 description: "This is the official course website for the Technology Fundamentals of Business Analyitics Course"
 baseurl: "/MGMT6963-2015" # the subpath of your site, e.g. /blog/
-github_username:  rpi-analytics
-
+github_username:  "rpi-analytics"
+twitter_username: "jasonkuruzovich"
 
 #Header Menu Settings
 menu1: "Syllabus"

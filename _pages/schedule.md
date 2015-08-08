@@ -13,7 +13,7 @@ You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://gi
 
 | 	**Class**	 | 	**Date**	 | 	**Topic**	 | **Notes**|
 |:-----------:|:----------:|:-----------------------|:-----------------------|
-| 	1	 | 	8/31	 | 	The Rise of Analytics and the Tools of the Data Scientist	 | *Start of Classes*
+| 	1	 | 	8/31	 | 	[The Rise of Analytics and the Tools of the Data Scientist]({{site.baseurl}}/pages/class1/)	 | *Start of Classes*
 | 		 | 	9/7	 | 	*No Classes - Labor Day*	 | 
 | 	2	 | 	9/14	 | 	Accessing and Scraping Data	 | *Add Deadline*
 | 	3	 | 	9/21	 | 	Linking and Aggregating Data|

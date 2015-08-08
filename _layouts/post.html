@@ -7,8 +7,19 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • {{ page.author }}{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
   </header>
+    <table style="width:75%">
+        <tr>
+            <td> <h2>Readings</h2></td>
+            <td><h2>Assignments</h2></td>
+        </tr>
+        <tr>
+            <td> {{ page.readings }}</td>
+            <td>{{ page.assignment }}</td>
 
-  <article class="post-content">
+        </tr>
+    </table>
+
+    <article class="post-content">
     {{ content }}
   </article>
 
