@@ -4,8 +4,4 @@ title: Resources
 permalink: /pages/resources/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
-
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+There are an incredible number of online sources to help you in your path to become a data scientist. Here are a variety that you may find to be useful. If you find a resource that is particularly useful, please execute a [pull request](https://help.github.com/articles/creating-a-pull-request/).
