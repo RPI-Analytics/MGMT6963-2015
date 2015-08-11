@@ -1,0 +1,33 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.title }}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li> <a href="{{ site.baseurl }}/">Home</a> </li>
+                <li>  {% if site.menu1 %} <a class="page-link" href="{{ site.menu1_url| prepend: site.baseurl }}">{{ site.menu1 }}</a> {% endif %} </li>
+                <li> {% if site.menu2 %} <a class="page-link" href="{{ site.menu2_url }}">{{ site.menu2 }}</a> {% endif %} </li>
+                <li> {% if site.menu3 %} <a class="page-link" href="{{ site.menu3_url }}">{{ site.menu3 }}</a> {% endif %} </li>
+                <li> {% if site.menu4 %} <a class="page-link" href="{{ site.menu4_url | prepend: site.baseurl }}">{{ site.menu4 }}</a> {% endif %} </li>
+                <li> {% if site.menu5 %} <a class="page-link" href="{{ site.menu5_url | prepend: site.baseurl }}">{{ site.menu5 }}</a> {% endif %} </li>
+                <li> {% if site.menu6 %} <a class="page-link" href="{{ site.menu6_url | prepend: site.baseurl }}">{{ site.menu6 }}</a> {% endif %} </li>
+                <li> {% if site.menu7 %} <a class="page-link" href="{{ site.menu7_url | prepend: site.baseurl }}">{{ site.menu7 }}</a> {% endif %} </li>
+
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>

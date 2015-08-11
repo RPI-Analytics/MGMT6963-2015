@@ -1,13 +1,21 @@
-url: "http://rpi-analytics.github.io" # the base hostname & protocol for your site
+
+#URL
+url: "http://0.0.0.0:4000" # the base hostname & protocol for your sitetwitter_username: jasonkuruzovich
+#url: "http://rpi-analytics.github.io" # the base hostname & protocol for your site
 include: ['_pages']
 
 # Site settings
-title: "MGMT6963 Technology Fundamentals for Business Analytics"
+title: "RPI Analytics"
+course: "MGMT6963"
+instructor: "Jason Kuruzovich"
+course_title: "Technology Fundamentals for Business Analytics"
+header-img: img/home-bg.jpg
 email: "kuruzj@rpi.edu"
 description: "This is the official course website for the Technology Fundamentals of Business Analyitics Course"
 baseurl: "/MGMT6963-2015" # the subpath of your site, e.g. /blog/
 github_username:  "rpi-analytics"
 twitter_username: "jasonkuruzovich"
+
 
 #Header Menu Settings
 menu1: "Syllabus"
@@ -27,9 +35,81 @@ menu6_url: "/pages/resources"
 #menu7: "Resources"
 #menu7_url: "/resources"
 
+wk1_meet: "1"
+wk2_meet: ""
+wk3_meet: "2"
+wk4_meet: "3"
+wk5_meet: "4"
+wk6_meet: "5"
+wk7_meet: ""
+wk8_meet: "6"
+wk9_meet: "7"
+wk10_meet: "8"
+wk11_meet: "9"
+wk12_meet: "10"
+wk13_meet: "11"
+wk14_meet: "12"
+wk15_meet: "13"
+
+wk1_date: "8/31"
+wk2_date: "9/7"
+wk3_date: "9/14"
+wk4_date: "9/21"
+wk5_date: "9/28"
+wk6_date: "10/5"
+wk7_date: "10/12"
+wk8_date: "10/19"
+wk9_date: "10/26"
+wk10_date: "11/2"
+wk11_date: "11/9"
+wk12_date: "11/16"
+wk13_date: "11/23"
+wk14_date: "11/30"
+wk15_date: "12/7"
+
+wk1_topic: "The Rise of Analytics and the Tools of the Data Scientist"
+wk2_topic: "No Classes - Labor Day"
+wk3_topic: "Accessing and Scraping Data"
+wk4_topic: "Linking and Aggregating Data"
+wk5_topic: "Cleaning and Exploratory Analysis"
+wk6_topic: "Visualization"
+wk7_topic: "Columbus Day - No Classes"
+wk8_topic: "Feature Creation and Text Mining"
+wk9_topic: "Midterm"
+wk10_topic: "Structuring and Evaluating Predictive Models"
+wk11_topic: "Big Data with Hadoop and Spark"
+wk12_topic: "Big Data with Mongo DB"
+wk13_topic: "Putting it All Together - Case Study"
+wk14_topic: "Final Project Presentations"
+wk15_topic: "Final Exam"
+
+wk1_notes: "Start of Classes"
+wk2_notes: ""
+wk3_notes: "Add Deadline"
+wk4_notes: ""
+wk5_notes: ""
+wk6_notes: ""
+wk7_notes: ""
+wk8_notes: "10/23 is Drop Deadline"
+wk9_notes: ""
+wk10_notes: ""
+wk11_notes: ""
+wk12_notes: ""
+wk13_notes: ""
+wk14_notes: ""
+wk15_notes: ""
+
+
+
+
+
 
 
 # Build settings
 markdown: kramdown
 kramdown:
   input: GFM
+highlighter: pygments
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]

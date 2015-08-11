@@ -1,6 +1,7 @@
 ---
 layout: page
-title: Resources
+title: "Resources"
+description: "Continue your journey as a data scientist."
 permalink: /pages/resources/
 ---
 
