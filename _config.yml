@@ -9,12 +9,13 @@ title: "RPI Analytics"
 course: "MGMT6963"
 instructor: "Jason Kuruzovich"
 course_title: "Technology Fundamentals for Business Analytics"
-header-img: img/home-bg.jpg
+header-img: "img/1_header.png"
 email: "kuruzj@rpi.edu"
 description: "This is the official course website for the Technology Fundamentals of Business Analyitics Course"
 baseurl: "/MGMT6963-2015" # the subpath of your site, e.g. /blog/
 github_username:  "rpi-analytics"
 twitter_username: "jasonkuruzovich"
+linkedin_username: "jasonkuruzovich"
 
 
 #Header Menu Settings
