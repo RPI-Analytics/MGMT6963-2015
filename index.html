@@ -1,9 +1,10 @@
 ---
 layout: page
-header-img: "img/about-bg.jpg"
+header-img: "img/0_lally.jpg"
 ---
 
 {% for post in paginator.posts reversed  %}
+{% if post.visible %}
 <div class="post-preview">
     <a href="{{ post.url | prepend: site.baseurl }}">
         <h2 class="post-title"> {{ post.title }}
@@ -27,6 +28,7 @@ header-img: "img/about-bg.jpg"
     </table>
 </div>
 <hr>
+{% endif %}
 {% endfor %}
 
 <!-- Pager -->
