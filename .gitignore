@@ -8,3 +8,4 @@ coverage
 .ruby-gemset
 .sass-cache
 .idea/
+tmp/

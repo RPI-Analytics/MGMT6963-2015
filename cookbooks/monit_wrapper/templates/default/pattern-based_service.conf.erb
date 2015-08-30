@@ -1,0 +1,46 @@
+# Copyright 2015 ClearStory Data, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# managed by chef, changes will be overwritten
+
+<%
+if @cmd_line.include?('"')
+  fail "Command line cannot include double quotes (use single quotes instead). Found: #{@cmd_line}."
+end
+
+redirection = @append ? '>>' : '>'
+
+effective_cmd_line = (
+  @cmd_line + ' ' + [
+    @out_file ? "#{redirection} #{@out_file}" : nil,
+    @err_file ? "2#{redirection} #{@err_file}" : nil
+  ].compact.join(' ')
+).strip
+
+# Escape single quotes:
+# http://stackoverflow.com/questions/17632487/recommended-method-of-escaping-single-quotes-in-bash-double-quotes-backslashe
+escaped_cmd_line = effective_cmd_line.gsub("'", "'\\\\''")
+escaped_cmd_line_pattern = @cmd_line_pattern.gsub("'", "'\\\\''")
+%>
+
+check process <%= @service_name.inspect %>
+  matching <%= @cmd_line_pattern.inspect %>
+  every 1 cycles
+
+  start program "/bin/bash -c '<%= escaped_cmd_line %> </dev/null &'"
+  <% if @user %> as uid <%= @user %> as gid <%= @group || @user %> <% end %>
+
+  stop program "/usr/bin/pkill <% if @user %> -u <%= @user %> <% end %> -f '<%=
+    escaped_cmd_line_pattern %>'"
+  <% if @user %> as uid <%= @user %> as gid <%= @group || @user %> <% end %>

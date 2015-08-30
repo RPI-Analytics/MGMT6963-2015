@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+# Copyright 2015 ClearStory Data, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+set -u
+
+MAX_ACTION_ATTEMPTS=12
+ACTION_ATTEMPT_DELAY_SEC=10
+
+MAX_STATUS_QUERY_ATTEMPTS=120
+STATUS_QUERY_ATTEMPT_DELAY_SEC=1
+
+if [ $# -ne 2 ]; then
+  echo "Start or stop a Monit service, and wait for the status to be updated." >&2
+  echo "Multiple attempts are made if another action is already in progress." >&2
+  echo >&2
+  echo "Usage: ${0##*/} <action> <service_name>" >&2
+  echo "<action> is 'start' or 'stop'." >&2
+  exit 1
+fi
+
+action=$1
+service_name=$2
+
+if [ "${action}" != "start" ] && [ "${action}" != "stop" ]; then
+  echo "Invalid action: ${action} ('start' or 'stop' expected)." >&2
+  exit 1
+fi
+
+if [ "${action}" == "start" ]; then
+  expected_status="Running"
+else
+  expected_status="Not monitored"
+fi
+
+action_attempt=0
+
+while true; do
+  action_attempt=$(( $action_attempt + 1 ))
+  if sudo <%= @monit_executable %> "${action}" "${service_name}" 2>&1 >/dev/null | \
+      grep "Other action already in progress -- please try again later"; then
+    if [ "${action_attempt}" -ge "${MAX_ACTION_ATTEMPTS}" ]; then
+      echo "Not retrying to ${action} ${service_name} after ${action_attempt} attempts" >&2
+      exit 1
+    fi
+    echo "Monit is busy with a pending action, waiting (attempt ${action_attempt})" >&2
+    sleep "$ACTION_ATTEMPT_DELAY_SEC"
+    continue
+  fi
+
+  # The monit command failed, and we don't know how to handle this failure.
+  if [ "${PIPESTATUS[0]}" -ne 0 ]; then
+    echo "Failed to ${action} ${service_name}" >&2
+    exit 1
+  fi
+
+  # Success: break and wait for status to stabilize.
+  break
+done
+
+set -e -o pipefail
+
+echo "Waiting for ${service_name} to ${action}"
+status_query_attempt=0
+while ! sudo <%= @monit_executable %> summary | \
+      egrep "${service_name}.*${expected_status}$" >/dev/null; do
+  status_query_attempt=$(( $status_query_attempt + 1 ))
+  if [ $status_query_attempt -gt "${MAX_STATUS_QUERY_ATTEMPTS}" ]; then
+    echo "Timed out waiting for ${service_name} to ${action}" >&2
+    exit 1
+  fi
+  sleep "${STATUS_QUERY_ATTEMPT_DELAY_SEC}"
+done

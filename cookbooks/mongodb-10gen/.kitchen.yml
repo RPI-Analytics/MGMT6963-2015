@@ -1,0 +1,30 @@
+---
+driver_plugin: vagrant
+driver_config:
+  require_chef_omnibus: true
+
+provisioner:
+  name: chef_zero
+
+platforms:
+- name: ubuntu-12.04
+- name: ubuntu-14.04
+
+suites:
+- name: default
+  run_list: ["recipe[simplelog_handler]","recipe[mongodb-10gen]"]
+  attributes: {}
+- name: router
+  run_list:
+    - "recipe[simplelog_handler]"
+    - "recipe[mongodb-10gen::config]"
+    - "recipe[mongodb-10gen::router]"
+  attributes: {}
+- name: default_basedir
+  run_list: ["recipe[simplelog_handler]","recipe[mongodb-10gen]"]
+  attributes:
+    mongodb:
+      base_dir: '/my/custom/base/etc'
+- name: single
+  run_list: ["recipe[simplelog_handler]","recipe[mongodb-10gen::single]"]
+  attributes: {}
