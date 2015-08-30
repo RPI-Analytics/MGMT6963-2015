@@ -1,0 +1,48 @@
+---
+layout: page
+header-img: "img/0_lally.jpg"
+---
+
+{% for post in paginator.posts reversed  %}
+{% if post.visible %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title"> {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+    </a>
+    <p class="post-meta">{{ post.date | date: "%B %-d, %Y" }}</p>
+    <table style="width:75%">
+        <tr>
+            {% if post.readings %} <td><h4>Readings</h4></td> {% endif %}
+            {% if post.assignment %}  <td><h4>Assignments</h4></td> {% endif %}
+        </tr>
+        <tr>
+            {% if post.readings %}  <td>{{ post.readings }}</td> {% endif %}
+            {% if post.assignment %}  <td> {{ post.assignment }}</td> {% endif %}
+        </tr>
+    </table>
+</div>
+<hr>
+{% endif %}
+{% endfor %}
+
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
