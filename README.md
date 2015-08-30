@@ -18,6 +18,7 @@ There are a wide variety of recipes used, and you can add or remove as desired. 
 ## Credits
 This VM utilizes as a base box for the [Spark Mooc](https://github.com/spark-mooc/mooc-setup)
 
+
 Other customizations created by Mario Rodas (@marsam on GitHub) and further adopted for Mining the Social Web by Matthew A. Russell.
 
 

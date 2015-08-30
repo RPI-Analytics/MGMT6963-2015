@@ -9,3 +9,4 @@ coverage
 .sass-cache
 .idea/
 tmp/
+.vagrant/
