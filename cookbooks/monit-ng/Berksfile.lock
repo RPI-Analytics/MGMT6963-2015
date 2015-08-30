@@ -1,0 +1,22 @@
+DEPENDENCIES
+  monit-ng
+    path: .
+    metadata: true
+  setup
+    path: test/fixtures/cookbooks/setup
+
+GRAPH
+  apt (2.6.1)
+  build-essential (2.2.3)
+  monit-ng (1.8.1)
+    apt (>= 0.0.0)
+    build-essential (>= 0.0.0)
+    ubuntu (>= 0.0.0)
+    yum-epel (>= 0.0.0)
+  setup (0.0.0)
+    monit-ng (>= 0.0.0)
+  ubuntu (1.1.8)
+    apt (>= 0.0.0)
+  yum (3.5.3)
+  yum-epel (0.6.0)
+    yum (~> 3.0)

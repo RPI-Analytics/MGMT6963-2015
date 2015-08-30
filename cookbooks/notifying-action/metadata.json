@@ -1,0 +1,39 @@
+{
+  "name": "notifying-action",
+  "description": "An easier way to send notifications from resources",
+  "long_description": "# notifying-action\n\n[![Build Status](https://travis-ci.org/clearstorydata-cookbooks/notifying-action.svg?branch=master)](https://travis-ci.org/clearstorydata-cookbooks/notifying-action)\n\nThis Chef cookbook simplifies creating resource providers that enclose other resources and need to\nnotify their subscribers based on the notifications received from all or a subset of these\nenclosed resources. This is based on the approach of wrapping all sub-resources used in a resource\nin a sub-run-context and examining the results of running that sub-run-context. The implementation\nis influenced by the following sources:\n\n* http://realityforge.org/code/2012/07/17/lwrp-notify-on-changed-resources.html\n* The \"nested resources\" slide of this presentation:\n  http://www.slideshare.net/geekbri/lwrp-presentation/14\n\nOpscode Community page: http://community.opscode.com/cookbooks/notifying-action.\n\n## Example\n\nSuppose you are implementing a resource that installs a service\nand creates a configuration file for it. Then, you want to restart the service if either a new\nversion was installed, or the configuration file changed.\n\nIn your `providers/package_and_conf.rb` you would have:\n\n```ruby\naction :install do\n  notifying_action_wrapper do\n    package 'my_service' do\n      action :install\n    end\n\n    template '/etc/my_service/config.yml'\n      source 'config.yml.erb'\n    end\n  end\nend\n```\n\nYou will then be able to use this LWRP in recipes as follows:\n\n```ruby\nmy_cookbook_package_and_conf 'my_service' do\n  action :install\n  notifies :restart, 'service[my_service]', :immediately\nend\n\nservice 'my_service' do\n  action :nothing\nend\n```\n\n## Contributing\n\nIf you would like to contribute to this cookbook, please submit a pull request on GitHub.\n\n## Links\n\n* GitHub: https://github.com/clearstorydata-cookbooks/notifying-action\n* Chef Supermarket: https://supermarket.chef.io/cookbooks/notifying-action\n* Travis CI: https://travis-ci.org/clearstorydata-cookbooks/notifying-action\n\n## License\n\nApache License 2.0\n",
+  "maintainer": "ClearStory Data, Inc.",
+  "maintainer_email": "mbautin@clearstorydata.com",
+  "license": "Apache License 2.0",
+  "platforms": {
+
+  },
+  "dependencies": {
+
+  },
+  "recommendations": {
+
+  },
+  "suggestions": {
+
+  },
+  "conflicting": {
+
+  },
+  "providing": {
+
+  },
+  "replacing": {
+
+  },
+  "attributes": {
+
+  },
+  "groupings": {
+
+  },
+  "recipes": {
+
+  },
+  "version": "1.0.3"
+}

@@ -8,3 +8,6 @@ coverage
 .ruby-gemset
 .sass-cache
 .idea/
+.vagrant/
+tmp/
+cookbooks/*.lock

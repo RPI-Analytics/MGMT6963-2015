@@ -1,0 +1,10 @@
+DEPENDENCIES
+  notifying-action
+    path: .
+    metadata: true
+  notifying-action_test
+    path: spec/cookbooks/notifying-action_test
+
+GRAPH
+  notifying-action (1.0.1)
+  notifying-action_test (0.0.0)
