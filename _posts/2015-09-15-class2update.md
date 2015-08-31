@@ -1,13 +1,4 @@
----
-layout: post
-title:  "Class 3: Accessing and Using Data"
-date:   2015-09-15 18:00:00
-categories: "data"
-readings: "Data Science for Business, Chapter 1"
-assignment: "Please Complete Lab 1"
-permalink: /classes/class3/
 
----
 ### Presentation
 <iframe src="https://docs.google.com/presentation/d/1blf7JLF6EaWnXrw68HAD2STceeDdUVMX16Hkv099sKE/embed?start=true&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
@@ -252,4 +243,8 @@ https://commons.wikimedia.org/wiki/File%3AMatrix.svg
 By Lakeworks (Own work) [GFDL (http://www.gnu.org/copyleft/fdl.html) or CC BY-SA 4.0-3.0-2.5-2.0-1.0 (http://creativecommons.org/licenses/by-sa/4.0-3.0-2.5-2.0-1.0)], via Wikimedia Commons 
 
 
+## Photo Credits
+Header photo by Yale Rosen
+Mucoepidermoid carcinoma, high grade Case 200
+https://www.flickr.com/photos/pulmonary_pathology/6499879267 
 

@@ -30,8 +30,8 @@ layout: default
                         {% if page.assignment %}  <td><h4>Assignments</h4></td> {% endif %}
                     </tr>
                     <tr>
-                        {% if page.readings %}  <td>{{ page.readings }}</td> {% endif %}
-                        {% if page.assignment %}  <td> {{ page.assignment }}</td> {% endif %}
+                        {% if page.readings %}  <td>{{ page.readings | markdownify }}</td> {% endif %}
+                        {% if page.assignment %}  <td> {{ page.assignment | markdownify }}</td> {% endif %}
                     </tr>
                 </table>
 

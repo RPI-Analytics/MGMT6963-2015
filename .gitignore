@@ -10,4 +10,4 @@ coverage
 .idea/
 .vagrant/
 tmp/
-cookbooks/*.lock
+

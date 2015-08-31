@@ -10,7 +10,11 @@ There are an incredible number of online sources to help you in your path to bec
 Python
 Python for Data Science [ipython](http://nbviewer.ipython.org/github/gumption/Python_for_Data_Science/tree/master/)  [github](https://github.com/gumption/Python_for_Data_Science)
 
+OpenTechSchool's *Introduction to Data Processing with Python*  [Data Structures](http://opentechschool.github.io/python-data-intro/core/data.html)
+
 A Byte of Python [Book](http://files.swaroopch.com/python/byte_of_python.pdf)
 
+R
+Advanced R by Hadley Wickham [webpage] (http://adv-r.had.co.nz)
 
 

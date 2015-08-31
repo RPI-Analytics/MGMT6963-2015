@@ -22,8 +22,8 @@ header-img: "img/0_lally.jpg"
             {% if post.assignment %}  <td><h4>Assignments</h4></td> {% endif %}
         </tr>
         <tr>
-            {% if post.readings %}  <td>{{ post.readings }}</td> {% endif %}
-            {% if post.assignment %}  <td> {{ post.assignment }}</td> {% endif %}
+            {% if post.readings %}  <td>{{ post.readings | markdownify}}</td> {% endif %}
+            {% if post.assignment %}  <td> {{ post.assignment | markdownify}}</td> {% endif %}
         </tr>
     </table>
 </div>
