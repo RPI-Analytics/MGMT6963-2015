@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "TA" 
+name: "Florence Wong"
+email: "wangf5@rpi.edu"
+description: "I am the TA. If you have any questions, please let me know."
+hobbies: "traveling, swiming, hiking, biking, cooking, playing piano, painting" 
+picture: "/img/florence.jpg" 
+github_username:  "skyocean"
+twitter_username: "skywithocean"
+linkedin_username: "florence wong"
+website: "http://www.mms.com"
+
+#Additional student info
+desiredJob: "What type of job are you looking for when you graduate"
+program: "What program you are in (MS Analytics/MBA/MS Management)"
