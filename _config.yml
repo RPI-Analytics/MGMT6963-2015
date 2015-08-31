@@ -26,7 +26,7 @@ menu2: "Piazza"
 menu2_url: "https://piazza.com/rpi/fall2015/mgmt6963/home"
 #This should be link to LMS. If not using LMS, comment out.
 menu3: "Blackboard"
-menu3_url: "https://lms.rpi.edu"
+menu3_url: "https://lms9.rpi.edu:8443"
 menu4: "Schedule"
 menu4_url: "/pages/schedule"
 menu5: "Projects"
