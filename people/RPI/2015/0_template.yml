@@ -5,7 +5,7 @@ semester: "Fall"
 # Role should either be Instructor or Student or TA
 role: "Student" 
 name: "First Last"
-email: "Preferred email"
+email: "Preferred Email"
 description: "Give one sentence to describe you."
 hobbies: "What are some things you enjoy doing." 
 picture: "/img/photoname.jpg" 
