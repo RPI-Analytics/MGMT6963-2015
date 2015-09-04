@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Instructor" 
+name: "Jason Kuruzovich"
+email: "kuruzj@rpi.edu"
+description: "Professor, hacker, and supporter of all things entreprenuership."
+hobbies: "Running, sailing, biking, cooking." 
+picture: "/img/jasonkuruzovich.jpg" 
+github_username:  "jkuruzovich"
+twitter_username: "jasonkuruzovich"
+linkedin_username: "jasonkuruzovich"
+website: "www.jasonkuruzovich.com"
+
+#Additional student info
+desiredJob: "What type of job are you looking for when you graduate"
+program: "What program you are in"
