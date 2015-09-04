@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: “Forrest Hillery“
+email: “hillef@rpi.edu”
+description: “I liked grad school so much the first time, I decided to go back.”
+hobbies: “Reading, working out, watching sports and movies, tinkering with tech stuff.“ 
+picture: "/img/forresthillery.jpg" 
+github_username:  “fhillery82”
+twitter_username: “ilikegerms13”
+linkedin_username: "https://www.linkedin.com/in/forrestmhillery"
+website: ""
+
+#Additional student info
+desiredJob: “Analytics Associate”
+program: "MS Business Analytics"
