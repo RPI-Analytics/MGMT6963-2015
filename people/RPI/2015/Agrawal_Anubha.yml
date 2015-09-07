@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Anubha Agrawal"
+email: "agrawa3@rpi.edu"
+description: "Student, Avid reader and learner of all that relates to data science, data analytics and big data"
+hobbies: "Listening to music, watching movies and painting" 
+picture: "/img/Anubha_agrawal.jpg" 
+github_username:  "anubha123"
+twitter_username: ""
+linkedin_username: ""
+website: ""
+
+#Additional student info
+desiredJob: "Consulting"
+program: "MS IT"
