@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Joshua Terc"
+email: "tercj@rpi.edu"
+description: "I am a fairly laid back person who enjoys a good laugh."
+hobbies: "I enjoy playing sports, laughing, and taking naps." 
+picture: "imgterc_joshua.jpg" 
+github_username:  "Terc11"
+twitter_username: 
+linkedin_username: "https://www.linkedin.com/profile/view?id=AAMAABOKh-ABKYe-9h_DVulUkTijonvZHoULPhc&trk=hp-identity-name"
+website: 
+
+#Additional student info
+desiredJob: "I am interested in working in finance."
+program: "I am a student in the Business Analytics program."
