@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Arijit Deb"
+email: "deba@rpi.edu"
+description: "Fun loving and easy going."
+hobbies: "Reading, trying to play the guitar, badminton, table tennis, classic rock music and video games." 
+picture: "/img/arijitdeb.jpg" 
+github_username:  "digitalninja"
+twitter_username: "_ArijitDeb"
+linkedin_username: "Arijit Deb"
+website: ""
+
+#Additional student info
+desiredJob: "Something that's fun and pays well"
+program: "I am enrolled in the Master's in Information Technology Program"
