@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Yuhui Lin"
+email: "liny10@rpi.edu"
+description: "I'm a people who always has a goal."
+hobbies: "I enjoy traveling and watching tennis and basketball games." 
+picture: "/img/Yuhui_Mickey_Lin.jpg" 
+github_username:  "MickeyLYH"
+twitter_username: "Yuhui_Mickey"
+linkedin_username: "Yuhui_Lin"
+website: "blank"
+
+#Additional student info
+desiredJob: "I want to work for a consulting company as a consultant."
+program: "MS Management"
