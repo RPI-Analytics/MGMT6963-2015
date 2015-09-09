@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Fei Xie"
+email: "xief@rpi.edu"
+description: "Purdue graduate with Accounting, Manamgent, Finance and Entrepreneurship background, looking forward to enhancing statistical and analytical skills from MS BSAN program at Lally"
+hobbies: "Outside activities, such as hiking,camping,and rafting. Solving problems when people turn to me." 
+picture: "/img/fei.jpg" 
+github_username:  "bsanxiefei"
+twitter_username: "NA"
+linkedin_username: "Fei Xie"
+website: "NA"
+
+#Additional student info
+desiredJob: "Financial analyst, consultant for a CPA firm."
+program: "MS Business Analytics program"
