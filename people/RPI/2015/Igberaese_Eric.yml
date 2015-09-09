@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Eric Igberaese"
+email: "igbere2@rpi.edu"
+description: "I am a very chill, laidback guy."
+hobbies: "Hiking, listening to music, trying new foods." 
+picture: "/img/photoname.jpg" 
+github_username:  "ericigb"
+twitter_username: ""
+linkedin_username: "https://www.linkedin.com/in/eigberaese"
+website: ""
+
+#Additional student info
+desiredJob: "Data Science"
+program: "MS Analytics"
