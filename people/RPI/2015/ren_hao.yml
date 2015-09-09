@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Hao Ren"
+email: "renh2@rpi.edu"
+description: "A good person, which is indicated by my name. "
+hobbies: "Traveling, watching movies." 
+picture: "/img/haoren.jpg" 
+github_username:  "artinyam"
+twitter_username: " "
+linkedin_username: "https://www.linkedin.com/in/haoartin"
+website: " "
+
+#Additional student info
+desiredJob: "Consulting"
+program: "MS Business Analytics"
