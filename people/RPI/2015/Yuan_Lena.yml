@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: “Lena Yuan”
+email: “yuanw3@rpi.edu”
+description: “Postive.”
+hobbies: “Badminton.” 
+picture: "/img/IMG_8786.jpg" 
+github_username:  “Lena_Yuan”
+twitter_username: “yuenyuenwha”
+linkedin_username: “”
+website: ""
+
+#Additional student info
+desiredJob: “data analyst“
+program: "MS Analytics"
