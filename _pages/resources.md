@@ -7,12 +7,23 @@ permalink: /pages/resources/
 
 There are an incredible number of online sources to help you in your path to become a data scientist. Here are a variety that you may find to be useful. If you find a resource that is particularly useful, please execute a [pull request](https://help.github.com/articles/creating-a-pull-request/).
 
+Here is a list of [50 free ebooks](http://www.kdnuggets.com/2015/09/free-data-science-books.html).
+
+
 Python
 Python for Data Science [ipython](http://nbviewer.ipython.org/github/gumption/Python_for_Data_Science/tree/master/)  [github](https://github.com/gumption/Python_for_Data_Science)
 
 OpenTechSchool's *Introduction to Data Processing with Python*  [Data Structures](http://opentechschool.github.io/python-data-intro/core/data.html)
 
 A Byte of Python [Book](http://files.swaroopch.com/python/byte_of_python.pdf)
+
+#IPython Notebook 
+http://nbviewer.ipython.org/github/gumption/Python_for_Data_Science/blob/master/Python_for_Data_Science_all.ipynb
+
+http://nbviewer.ipython.org/github/gumption/Python_for_Data_Science/blob/master/Python_for_Data_Science_all.ipynb
+
+Natural Language Toolkit for Python
+http://www.nltk.org/book/ 
 
 R
 Advanced R by Hadley Wickham [webpage] (http://adv-r.had.co.nz)
