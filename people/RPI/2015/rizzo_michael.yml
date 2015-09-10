@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Michael Rizzo"
+email: "rizzom@rpi.edu"
+description: "Co-Term student with a B.S. in Mechanical Engineering"
+hobbies: "Swimming, Triathlons, Hockey, Football, Tennis, Model Trains" 
+picture: "/img/michaelrizzo.jpg" 
+github_username:  "mrizzo312"
+twitter_username: "blank"
+linkedin_username: "https://www.linkedin.com/profile/view?id=AAMAABOgEbsBjrypIFyxbNfRCFAhmx3pGEYVkfI&trk=hp-identity-name"
+website: "blank"
+
+#Additional student info
+desiredJob: "Sports (Hockey) Analytics"
+program: "MS Analytics"
