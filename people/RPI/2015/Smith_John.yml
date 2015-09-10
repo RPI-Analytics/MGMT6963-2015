@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "First Last"
+email: "Preferred Email"
+description: "Give one sentence to describe you."
+hobbies: "What are some things you enjoy doing." 
+picture: "/img/photoname.jpg" 
+github_username:  "yourgithub"
+twitter_username: "yourtwitter or blank"
+linkedin_username: "this is a link to your username or blank"
+website: "www.yourwebsite.com or blank"
+
+#Additional student info
+desiredJob: "What type of job are you looking for when you graduate"
+program: "What program you are in (MS Analytics/MBA/MS Management)"
