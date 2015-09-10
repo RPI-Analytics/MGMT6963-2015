@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Xiaoru Gao"
+email: "gaox9@rpi.edu"
+description: "A opmistic girl who loves to smile, and likes to take challenges."
+hobbies: "cooking, calligraphy, runing" 
+picture: "/img/Xiaoru_Gao.jpg" 
+github_username:  "XiaoruGao"
+twitter_username: ""
+linkedin_username: "Xiaoru Gao"
+website: ""
+
+#Additional student info
+desiredJob: "I'd like to be a venture capital analyst."
+program: "MS Management"
