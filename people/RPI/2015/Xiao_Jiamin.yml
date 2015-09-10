@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Jiamin Xiao"
+email: "xiaoj5@rpi.edu"
+description: "Optimistic and easygoing"
+hobbies: "Taking Roller Coaster." 
+picture: "/img/Jiamin_Xiao.jpg" 
+github_username:  "xjm1021"
+twitter_username: ""
+linkedin_username: ""
+website: ""
+
+#Additional student info
+desiredJob: "Risk Analyst or Data Scientist"
+program: "MS Analytics"
