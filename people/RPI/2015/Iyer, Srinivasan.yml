@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Srinivasan Iyer"
+email: "srinivasan.iyer91@gmail.com"
+description: "Innovative and Inquisitive"
+hobbies: "Listening to Music, Watching TV shows" 
+picture: "/img/srinivasan.jpg" 
+github_username:  "srinisid91"
+twitter_username: "yourtwitter or blank"
+linkedin_username: "srinivasaniyer91"
+website: "www.cosweb.com"
+
+#Additional student info
+desiredJob: "Data Scientist specializing in Data Visualization or Data Mining "
+program: "Master of Science in Business Analytics"
