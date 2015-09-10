@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Menglu Chang"
+email: "mlchang0820@gmail.com"
+description: "I'm a easygoing hardworking foodie with big ambition for my future."
+hobbies: "watching movies, cooking, travel planning." 
+picture: "/img/menglu.jpg" 
+github_username:  "mlchang0820"
+twitter_username: "MengluChang1"
+linkedin_username: "www.linkedin.com/in/mengluchang"
+website: ""
+
+#Additional student info
+desiredJob: "Consultant"
+program: "MS Business Analytics"
