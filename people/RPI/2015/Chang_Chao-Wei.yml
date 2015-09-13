@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Chao-Wei Chang"
+email: "changc13@rpi.edu"
+description: "M.S Supply Chain candidate with undergraduate degree in Industrial Engineering"
+hobbies: "I like to watch TV shows, travel, and enjoy food" 
+picture: "/img/kevinchang.jpg" 
+github_username:  "ke800518"
+twitter_username: ""
+linkedin_username: "Kevin (Chao-Wei) Chang"
+website: ""
+
+#Additional student info
+desiredJob: "Manufacturing Engineer/Supply Chain Analyst"
+program: "MS Supply Chain Management"
