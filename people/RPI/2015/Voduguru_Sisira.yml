@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Sisira Voduguru"
+email: "vodugs@rpi.edu"
+description: "Student at RPI,learner and traveller."
+hobbies: "Reading and watching movies." 
+picture: "/img/Voduguru_Sisira.jpg" 
+github_username:  "sisira90"
+twitter_username: "sisiravr"
+linkedin_username: "vodugurusisira1990@gmail.com"
+website: ""
+
+#Additional student info
+desiredJob: "Consultant"
+program: "MSIT(MIS)"
