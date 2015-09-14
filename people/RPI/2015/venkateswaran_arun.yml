@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Arun Venkateswaran"
+email: "venkaa6@rpi.edu"
+description: "Give one sentence to describe you."
+hobbies: "Work out, play Squash, watch Football, Soccer, Basketball" 
+picture: "/img/arunvenkateswaran.jpg" 
+github_username:  "venkatea"
+twitter_username: "roony28"
+linkedin_username: "https://www.linkedin.com/pub/arun-venkateswaran/95/987/561"
+website: ""
+
+#Additional student info
+desiredJob: "Data Scientist"
+program: "MS Business Analytics"

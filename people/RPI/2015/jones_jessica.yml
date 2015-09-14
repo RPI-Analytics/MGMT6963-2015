@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: “Student” 
+name: “Jessica Jones“
+email: “jonesj17@rpi.edu”
+description: “I’m from the Capital District but spent the last 10 years in DC working on telecom and internet policy.”
+hobbies: “running, reading, trivia, cooking.” 
+picture: "/img/Jones_jessica.jpg" 
+github_username:  “Jesscj17”
+twitter_username: "blank"
+linkedin_username: “https://www.linkedin.com/pub/jessica-jones/65/b0a/572”
+website: “blank"
+
+#Additional student info
+desiredJob: “Business Intelligence Analyst”
+program: "MS Information Technology"

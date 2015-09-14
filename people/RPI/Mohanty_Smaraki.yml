@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Smaraki Mohanty"
+email: "mohans3@rpi.edu"
+description: "I am a Lally student of Master's in Management"
+hobbies: "Dancing" 
+picture: "/img/Smaraki.jpg" 
+github_username:  "Smaraki11"
+twitter_username: " "
+linkedin_username: "Smaraki Mohanty "
+website: ""
+
+#Additional student info
+desiredJob: "Will figure it out soon"
+program: "MS Management"

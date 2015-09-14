@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Ian Bynum"
+email: "bynumi@rpi.edu"
+description: "Naval Submarine Officer: Leading people in a complex technical environment."
+hobbies: "Golf, Basketball, Tennis, Cooking, Violin." 
+picture: "/img/Ian Bynum.jpg" 
+github_username:  "ianbynum"
+twitter_username: "blank"
+linkedin_username: "blank"
+website: "blank"
+
+#Additional student info
+desiredJob: "Management position in a technical field"
+program: "MS Business Analytics"

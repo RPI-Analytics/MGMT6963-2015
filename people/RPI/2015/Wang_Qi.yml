@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Qi Wang"
+email: "wangq17@rpi.edu"
+description: "Hello! You can call me KiKi."
+hobbies: "eating delicious foods, watching movies, travelling" 
+picture: "/img/Qi.jpg" 
+github_username:  "kiki-wang"
+twitter_username: "N/A"
+linkedin_username: "Qi Wang"
+website: "N/A"
+
+#Additional student info
+desiredJob: "consultant, financial analyst"
+program: "MS Analytics"
