@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Ramona(Yuanmeng) Zhang"
+email: "Preferred Email"
+description: "What does not kill you makes you stronger."
+hobbies: "Travelling." 
+picture: "/img/Ramona_Zhang.jpg" 
+github_username:  "Ramoooona"
+twitter_username: ""
+linkedin_username: "https://www.linkedin.com/pub/ramona-yuanmeng-zhang/95/576/97"
+website: ""
+
+#Additional student info
+desiredJob: "Data analyst"
+program: "MS Analytics"
