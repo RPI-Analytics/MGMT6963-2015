@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "YIKE LI"
+email: "lyk0208@gmail.com"
+description: "an easy going person who wants to experience lots of different things "
+hobbies: "adventure,backpacker,cooking." 
+picture: "/img/Yike_Li.jpg" 
+github_username:  "yikli"
+twitter_username: "Yike Li"
+linkedin_username: "https://www.linkedin.com/pub/yi-ke-elka-li/79/577/776"
+website: ""
+
+#Additional student info
+desiredJob: "consulting and markting "
+program: "MS Analytics"
