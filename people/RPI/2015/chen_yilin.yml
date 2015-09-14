@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Yi Lin Chen"
+email: "cheny23@rpi.edu"
+description: "Co-terminal student in management, psychology and business analytics with interests in consulting. "
+hobbies: "Traveling, Cooking, Tennis, Watching Movies & Shows " 
+picture: "/img/yilinchen.jpg" 
+github_username:  "cheny23"
+twitter_username: ""
+linkedin_username: "https://www.linkedin.com/pub/yi-lin-chen/9b/a/51b"
+website: ""
+
+#Additional student info
+desiredJob: "What type of job are you looking for when you graduate"
+program: "MS in Business Analytics"
