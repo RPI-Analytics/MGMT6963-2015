@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Bin Wang"
+email: "wangb9@rpi.edu"
+description: "A bad boy."
+hobbies: "playing computer games and traveling." 
+picture: "/img/BinWang.jpg" 
+github_username:  "Bin0511"
+twitter_username: ""
+linkedin_username: ""
+website: ""
+
+#Additional student info
+desiredJob: "managers in the bank"
+program: "MS Analytics"
