@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+name: "Bo Zeng"
+email: "zengb@rpi.edu"
+description: "Passionate and curious."
+hobbies: "Playing games and listening music." 
+picture: "/img/Zeng Bo.jpg" 
+github_username:  "banstick"
+twitter_username: ""
+linkedin_username: "https://www.linkedin.com/profile/view?id=AAIAABLIjKoB6g9XuOT4LxMT2dSXu57MXGGWc8Q&trk=nav_responsive_tab_profile_pic"
+website: ""
+
+
+#Additional student info
+desiredJob: "Data Scientist"
+program: "MS Analytics"
