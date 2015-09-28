@@ -11,11 +11,11 @@ Public solutions/tutorials to Kaggle problems can be tremendous opportunities to
 The goal of the first assignment is to understand data from an analytics problem as well as so that you see the overall process in action.  Overall, you should assess 2 different datasets and 3 total solutions.  
 
 ### Solutions 1-2: Titantic Dataset
-Solutions 1-2 should be for the [Titanic](https://www.kaggle.com/c/titanic), and you should be able to get a prediction for each.  You should compare differences in the solutions (in terms of performance) so both solutions must work.   Feel free to share comments with others in the class on which solutions work and which ones don't via.
+Solutions 1-2 should be for the [Titanic](https://www.kaggle.com/c/titanic), and you should be able to get a prediction for each. One should be Python and one R.  You should compare differences in the solutions (in terms of performance) so both solutions must work.   Feel free to share comments with others in the class on which solutions work and which ones don't via [this document](https://docs.google.com/document/d/1z-TL0OTVpj6HpIIHrFwVglakvu3mJ-ZsYMoR38kCOmo/edit).
 
-(1) Overview of Titanic Analytics Problem and Data.  You could provide descriptions as well as assessments of missing values, etc.   
+(1) Overview of Titanic Analytics Problem and Data.  You could provide descriptions of key fields.
 
-(2) Solutions. Provide an overall summary of the approach including which features where created, how the the data was sampled, and the model used for the prediction. 
+(2) Solutions. Provide an overall summary of the approach including which features where created, how the the data was sampled, and the model used for the prediction. Going line by line through the solutions and commenting what they are doing is useful. 
 
 (3) Compare the predictive performance of the R solution vs the Python solution.  
 
