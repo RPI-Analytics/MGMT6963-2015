@@ -3,7 +3,7 @@
 <head>
 
 <meta charset="utf-8" />
-<title>Lab 4</title>
+<title>Lab4</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -177,32 +177,93 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Technology-Fundamentals-for-Business-Analytics-Lab-4">Technology Fundamentals for Business Analytics Lab 4<a class="anchor-link" href="#Technology-Fundamentals-for-Business-Analytics-Lab-4">&#182;</a></h1><h2 id="Overview">Overview<a class="anchor-link" href="#Overview">&#182;</a></h2><p>Subsetting data, merging data, and aggregating data are each extremely useful</p>
+<h1 id="Technology-Fundamentals-for-Business-Analytics-Lab-4">Technology Fundamentals for Business Analytics Lab 4<a class="anchor-link" href="#Technology-Fundamentals-for-Business-Analytics-Lab-4">&#182;</a></h1><h2 id="Overview">Overview<a class="anchor-link" href="#Overview">&#182;</a></h2><p>Subsetting data, merging data, and aggregating data in Python.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="prompt input_prompt">In&nbsp;[145]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<div class=" highlight hl-ipython2"><pre><span class="c">#This is going to create some sample data that we can work with for our analysis. </span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
  
 <span class="c">#Create a dataframe from a random numpy array </span>
 <span class="c">#http://docs.scipy.org/doc/numpy/reference/generated/numpy.random.randn.html</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">((</span><span class="mi">20</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">),</span>  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">,</span> <span class="s">&#39;b&#39;</span><span class="p">,</span> <span class="s">&#39;c&#39;</span><span class="p">,</span> <span class="s">&#39;d&#39;</span><span class="p">]</span> <span class="p">)</span>
 <span class="k">print</span> <span class="n">df</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="c"># This creates a new dataframe from df </span>
 <span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">((</span><span class="mi">20</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="p">),</span>  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s">&#39;e&#39;</span><span class="p">,</span> <span class="s">&#39;f&#39;</span><span class="p">,</span> <span class="s">&#39;g&#39;</span><span class="p">,</span> <span class="s">&#39;h&#39;</span><span class="p">]</span> <span class="p">)</span>
 <span class="k">print</span> <span class="n">df2</span>
+<span class="k">print</span> <span class="n">df3</span>
+<span class="k">print</span> <span class="n">df4</span>
 
 <span class="c">#Notice how it automatically generates an index 0-9. </span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>           a          b          c          d
+0  20.966500  26.149632  18.416406   5.737357
+1  18.108707  15.533413  31.860974  18.567691
+2  26.906641  25.743868  22.561520  22.533756
+3  25.783053  19.113882  17.197225  15.789697
+4  24.028175   8.235366  21.432091  24.244823
+5  20.022652  18.769690  13.452382  21.823068
+6  20.806974  22.350539  20.195054  13.126667
+7  20.459724  20.323686  22.118194  17.553785
+8  13.578215  20.332386  26.693867  16.566077
+9  24.931810  17.613739  21.605902  20.668964
+           a          b          c          d
+0  20.966500  26.149632  18.416406   5.737357
+1  18.108707  15.533413  31.860974  18.567691
+2  26.906641  25.743868  22.561520  22.533756
+3  25.783053  19.113882  17.197225  15.789697
+4  24.028175   8.235366  21.432091  24.244823
+5  20.022652  18.769690  13.452382  21.823068
+6  20.806974  22.350539  20.195054  13.126667
+7  20.459724  20.323686  22.118194  17.553785
+8  13.578215  20.332386  26.693867  16.566077
+9  24.931810  17.613739  21.605902  20.668964
+           a          b          c          d
+0  20.966500  26.149632  18.416406   5.737357
+1  18.108707  15.533413  31.860974  18.567691
+2  26.906641  25.743868  22.561520  22.533756
+3  25.783053  19.113882  17.197225  15.789697
+4  24.028175   8.235366  21.432091  24.244823
+5  20.022652  18.769690  13.452382  21.823068
+6  20.806974  22.350539  20.195054  13.126667
+7  20.459724  20.323686  22.118194  17.553785
+8  13.578215  20.332386  26.693867  16.566077
+9  24.931810  17.613739  21.605902  20.668964
+           e          f          g          h
+0  15.602570  13.959673  20.825387  22.639154
+1  16.899620  27.812643  14.706201  19.191837
+2  14.567181  21.955734  21.035244  14.765904
+3  19.816062  18.350397  14.726465  18.150497
+4  33.768035   9.751505  29.089492  25.721509
+5  22.641559  26.843551  22.691911  19.679208
+6  23.127548  17.296965  26.012906  25.210397
+7  18.213551  13.677088  21.306722  21.756867
+8  13.716335  18.647608  19.078827  29.794494
+9  17.225318  16.816098  26.180554  29.732283
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -212,7 +273,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Selecting-columns">Selecting columns<a class="anchor-link" href="#Selecting-columns">&#182;</a></h2><p>The Panda's package includes with it functionality to do a wide variety of different methods. You can read more about the documentation for the ix method<a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.ix.html">here</a>.</p>
+<h2 id="Selecting-columns">Selecting columns<a class="anchor-link" href="#Selecting-columns">&#182;</a></h2><p>The Panda's package includes with it functionality to do a wide variety of different methods. You can read more about the documentation for the ix method <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.ix.html">here</a>.</p>
 
 </div>
 </div>
@@ -222,7 +283,9 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[45]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>     <span class="c">#All rows, column 0-2</span>
+<div class=" highlight hl-ipython2"><pre><span class="c">#Here we can see that there is a similar structure to R, with selecting the desired columns by passing a list.</span>
+
+<span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>     <span class="c">#All rows, column 0-2</span>
 <span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]]</span>     <span class="c">#All rows, column 0-2</span>
 <span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,</span><span class="s">&#39;a&#39;</span><span class="p">:</span><span class="s">&#39;b&#39;</span><span class="p">]</span> <span class="c">#All rows, column a-b</span>
 <span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[:,[</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">,</span><span class="s">&#39;d&#39;</span><span class="p">]]</span> <span class="c">#All rows, columns a, c, d</span>
@@ -321,7 +384,8 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[117]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c">#df.drop([Column Name or list],inplace=True,axis=1)</span>
+<div class=" highlight hl-ipython2"><pre><span class="c">#Here, we can remove columns specifically from a dataframe useing the drop method.</span>
+<span class="c">#df.drop([Column Name or list],inplace=True,axis=1)</span>
 <span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s">&#39;a&#39;</span><span class="p">,</span><span class="s">&#39;c&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">df2</span>
 </pre></div>
@@ -462,10 +526,10 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[55]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c">#We can now </span>
+<div class=" highlight hl-ipython2"><pre><span class="c">#We can now generate a vector based on a critera and then use this for selection</span>
 <span class="n">select</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">20</span>
 <span class="k">print</span> <span class="n">select</span>
-<span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">select</span><span class="p">]</span>
+<span class="k">print</span> <span class="n">df</span><span class="o">.</span><span class="n">ix</span><span class="p">[</span><span class="n">select</span><span class="p">]</span> <span class="c">#Notice by including only one variable we are selecting rows and all columns.</span>
 
 <span class="n">select2</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;a&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">20</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s">&#39;c&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">30</span><span class="p">)</span>  <span class="c">#More complex criteria</span>
 <span class="k">print</span> <span class="n">select2</span>
@@ -522,7 +586,933 @@ dtype: bool
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Merging-Data">Merging Data<a class="anchor-link" href="#Merging-Data">&#182;</a></h2>
+<h2 id="Exercises">Exercises<a class="anchor-link" href="#Exercises">&#182;</a></h2><p>These toy examples are fine, but for this exercise we will use the Titaantic dataset. We want to split this out in a few different ways.</p>
+<p>1P. Subset only the <em>survived</em>, <em>sex</em>, and <em>age</em> columns and create a new dataframe with the results.</p>
+<p>2P. Drop the <em>ticket</em> and the cabin and create a new dataframe with the results.</p>
+<p>3P. Split the dataset into a <em>train</em> dataframe having the first 80% of the records and a <em>test</em> dataframe having the last 20%.</p>
+<p>4P. Randomely sample the dataset so that there are 2 samples.</p>
+<p>5P. Create one dataframe with all of the <em>males</em> and a second with all of the <em>females</em>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[144]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="n">cr</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">Out[144]:</div>
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>ticket</th>
+      <th>fare</th>
+      <th>cabin</th>
+      <th>embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Braund, Mr. Owen Harris</td>
+      <td>male</td>
+      <td>22</td>
+      <td>1</td>
+      <td>0</td>
+      <td>A/5 21171</td>
+      <td>7.2500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Cumings, Mrs. John Bradley (Florence Briggs Th...</td>
+      <td>female</td>
+      <td>38</td>
+      <td>1</td>
+      <td>0</td>
+      <td>PC 17599</td>
+      <td>71.2833</td>
+      <td>C85</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>3</td>
+      <td>Heikkinen, Miss. Laina</td>
+      <td>female</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+      <td>STON/O2. 3101282</td>
+      <td>7.9250</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Futrelle, Mrs. Jacques Heath (Lily May Peel)</td>
+      <td>female</td>
+      <td>35</td>
+      <td>1</td>
+      <td>0</td>
+      <td>113803</td>
+      <td>53.1000</td>
+      <td>C123</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Allen, Mr. William Henry</td>
+      <td>male</td>
+      <td>35</td>
+      <td>0</td>
+      <td>0</td>
+      <td>373450</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Moran, Mr. James</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330877</td>
+      <td>8.4583</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>1</td>
+      <td>McCarthy, Mr. Timothy J</td>
+      <td>male</td>
+      <td>54</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17463</td>
+      <td>51.8625</td>
+      <td>E46</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Palsson, Master. Gosta Leonard</td>
+      <td>male</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>349909</td>
+      <td>21.0750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1</td>
+      <td>3</td>
+      <td>Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)</td>
+      <td>female</td>
+      <td>27</td>
+      <td>0</td>
+      <td>2</td>
+      <td>347742</td>
+      <td>11.1333</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Nasser, Mrs. Nicholas (Adele Achem)</td>
+      <td>female</td>
+      <td>14</td>
+      <td>1</td>
+      <td>0</td>
+      <td>237736</td>
+      <td>30.0708</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1</td>
+      <td>3</td>
+      <td>Sandstrom, Miss. Marguerite Rut</td>
+      <td>female</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>PP 9549</td>
+      <td>16.7000</td>
+      <td>G6</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Bonnell, Miss. Elizabeth</td>
+      <td>female</td>
+      <td>58</td>
+      <td>0</td>
+      <td>0</td>
+      <td>113783</td>
+      <td>26.5500</td>
+      <td>C103</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Saundercock, Mr. William Henry</td>
+      <td>male</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>A/5. 2151</td>
+      <td>8.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Andersson, Mr. Anders Johan</td>
+      <td>male</td>
+      <td>39</td>
+      <td>1</td>
+      <td>5</td>
+      <td>347082</td>
+      <td>31.2750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Vestrom, Miss. Hulda Amanda Adolfina</td>
+      <td>female</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+      <td>350406</td>
+      <td>7.8542</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Hewlett, Mrs. (Mary D Kingcome)</td>
+      <td>female</td>
+      <td>55</td>
+      <td>0</td>
+      <td>0</td>
+      <td>248706</td>
+      <td>16.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Rice, Master. Eugene</td>
+      <td>male</td>
+      <td>2</td>
+      <td>4</td>
+      <td>1</td>
+      <td>382652</td>
+      <td>29.1250</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Williams, Mr. Charles Eugene</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>244373</td>
+      <td>13.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Vander Planke, Mrs. Julius (Emelia Maria Vande...</td>
+      <td>female</td>
+      <td>31</td>
+      <td>1</td>
+      <td>0</td>
+      <td>345763</td>
+      <td>18.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>1</td>
+      <td>3</td>
+      <td>Masselmani, Mrs. Fatima</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2649</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>0</td>
+      <td>2</td>
+      <td>Fynney, Mr. Joseph J</td>
+      <td>male</td>
+      <td>35</td>
+      <td>0</td>
+      <td>0</td>
+      <td>239865</td>
+      <td>26.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Beesley, Mr. Lawrence</td>
+      <td>male</td>
+      <td>34</td>
+      <td>0</td>
+      <td>0</td>
+      <td>248698</td>
+      <td>13.0000</td>
+      <td>D56</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>1</td>
+      <td>3</td>
+      <td>McGowan, Miss. Anna "Annie"</td>
+      <td>female</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330923</td>
+      <td>8.0292</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Sloper, Mr. William Thompson</td>
+      <td>male</td>
+      <td>28</td>
+      <td>0</td>
+      <td>0</td>
+      <td>113788</td>
+      <td>35.5000</td>
+      <td>A6</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Palsson, Miss. Torborg Danira</td>
+      <td>female</td>
+      <td>8</td>
+      <td>3</td>
+      <td>1</td>
+      <td>349909</td>
+      <td>21.0750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>3</td>
+      <td>Asplund, Mrs. Carl Oscar (Selma Augusta Emilia...</td>
+      <td>female</td>
+      <td>38</td>
+      <td>1</td>
+      <td>5</td>
+      <td>347077</td>
+      <td>31.3875</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Emir, Mr. Farred Chehab</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2631</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>0</td>
+      <td>1</td>
+      <td>Fortune, Mr. Charles Alexander</td>
+      <td>male</td>
+      <td>19</td>
+      <td>3</td>
+      <td>2</td>
+      <td>19950</td>
+      <td>263.0000</td>
+      <td>C23 C25 C27</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>1</td>
+      <td>3</td>
+      <td>O'Dwyer, Miss. Ellen "Nellie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>330959</td>
+      <td>7.8792</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Todoroff, Mr. Lalio</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>349216</td>
+      <td>7.8958</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>861</th>
+      <td>0</td>
+      <td>2</td>
+      <td>Giles, Mr. Frederick Edward</td>
+      <td>male</td>
+      <td>21</td>
+      <td>1</td>
+      <td>0</td>
+      <td>28134</td>
+      <td>11.5000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>862</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Swift, Mrs. Frederick Joel (Margaret Welles Ba...</td>
+      <td>female</td>
+      <td>48</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17466</td>
+      <td>25.9292</td>
+      <td>D17</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>863</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Sage, Miss. Dorothy Edith "Dolly"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>8</td>
+      <td>2</td>
+      <td>CA. 2343</td>
+      <td>69.5500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>864</th>
+      <td>0</td>
+      <td>2</td>
+      <td>Gill, Mr. John William</td>
+      <td>male</td>
+      <td>24</td>
+      <td>0</td>
+      <td>0</td>
+      <td>233866</td>
+      <td>13.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>865</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Bystrom, Mrs. (Karolina)</td>
+      <td>female</td>
+      <td>42</td>
+      <td>0</td>
+      <td>0</td>
+      <td>236852</td>
+      <td>13.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>866</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Duran y More, Miss. Asuncion</td>
+      <td>female</td>
+      <td>27</td>
+      <td>1</td>
+      <td>0</td>
+      <td>SC/PARIS 2149</td>
+      <td>13.8583</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>867</th>
+      <td>0</td>
+      <td>1</td>
+      <td>Roebling, Mr. Washington Augustus II</td>
+      <td>male</td>
+      <td>31</td>
+      <td>0</td>
+      <td>0</td>
+      <td>PC 17590</td>
+      <td>50.4958</td>
+      <td>A24</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>868</th>
+      <td>0</td>
+      <td>3</td>
+      <td>van Melkebeke, Mr. Philemon</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>345777</td>
+      <td>9.5000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>869</th>
+      <td>1</td>
+      <td>3</td>
+      <td>Johnson, Master. Harold Theodor</td>
+      <td>male</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>347742</td>
+      <td>11.1333</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>870</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Balkic, Mr. Cerin</td>
+      <td>male</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+      <td>349248</td>
+      <td>7.8958</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>871</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Beckwith, Mrs. Richard Leonard (Sallie Monypeny)</td>
+      <td>female</td>
+      <td>47</td>
+      <td>1</td>
+      <td>1</td>
+      <td>11751</td>
+      <td>52.5542</td>
+      <td>D35</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>872</th>
+      <td>0</td>
+      <td>1</td>
+      <td>Carlsson, Mr. Frans Olof</td>
+      <td>male</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+      <td>695</td>
+      <td>5.0000</td>
+      <td>B51 B53 B55</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>873</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Vander Cruyssen, Mr. Victor</td>
+      <td>male</td>
+      <td>47</td>
+      <td>0</td>
+      <td>0</td>
+      <td>345765</td>
+      <td>9.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>874</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Abelson, Mrs. Samuel (Hannah Wizosky)</td>
+      <td>female</td>
+      <td>28</td>
+      <td>1</td>
+      <td>0</td>
+      <td>P/PP 3381</td>
+      <td>24.0000</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>875</th>
+      <td>1</td>
+      <td>3</td>
+      <td>Najib, Miss. Adele Kiamie "Jane"</td>
+      <td>female</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2667</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>876</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Gustafsson, Mr. Alfred Ossian</td>
+      <td>male</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7534</td>
+      <td>9.8458</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>877</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Petroff, Mr. Nedelio</td>
+      <td>male</td>
+      <td>19</td>
+      <td>0</td>
+      <td>0</td>
+      <td>349212</td>
+      <td>7.8958</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>878</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Laleff, Mr. Kristo</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>0</td>
+      <td>349217</td>
+      <td>7.8958</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>879</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Potter, Mrs. Thomas Jr (Lily Alexenia Wilson)</td>
+      <td>female</td>
+      <td>56</td>
+      <td>0</td>
+      <td>1</td>
+      <td>11767</td>
+      <td>83.1583</td>
+      <td>C50</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>880</th>
+      <td>1</td>
+      <td>2</td>
+      <td>Shelley, Mrs. William (Imanita Parrish Hall)</td>
+      <td>female</td>
+      <td>25</td>
+      <td>0</td>
+      <td>1</td>
+      <td>230433</td>
+      <td>26.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>881</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Markun, Mr. Johann</td>
+      <td>male</td>
+      <td>33</td>
+      <td>0</td>
+      <td>0</td>
+      <td>349257</td>
+      <td>7.8958</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>882</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Dahlberg, Miss. Gerda Ulrika</td>
+      <td>female</td>
+      <td>22</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7552</td>
+      <td>10.5167</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>883</th>
+      <td>0</td>
+      <td>2</td>
+      <td>Banfield, Mr. Frederick James</td>
+      <td>male</td>
+      <td>28</td>
+      <td>0</td>
+      <td>0</td>
+      <td>C.A./SOTON 34068</td>
+      <td>10.5000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>884</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Sutehall, Mr. Henry Jr</td>
+      <td>male</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>SOTON/OQ 392076</td>
+      <td>7.0500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>885</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Rice, Mrs. William (Margaret Norton)</td>
+      <td>female</td>
+      <td>39</td>
+      <td>0</td>
+      <td>5</td>
+      <td>382652</td>
+      <td>29.1250</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+    <tr>
+      <th>886</th>
+      <td>0</td>
+      <td>2</td>
+      <td>Montvila, Rev. Juozas</td>
+      <td>male</td>
+      <td>27</td>
+      <td>0</td>
+      <td>0</td>
+      <td>211536</td>
+      <td>13.0000</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>887</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Graham, Miss. Margaret Edith</td>
+      <td>female</td>
+      <td>19</td>
+      <td>0</td>
+      <td>0</td>
+      <td>112053</td>
+      <td>30.0000</td>
+      <td>B42</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>888</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Johnston, Miss. Catherine Helen "Carrie"</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>2</td>
+      <td>W./C. 6607</td>
+      <td>23.4500</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>1</td>
+      <td>1</td>
+      <td>Behr, Mr. Karl Howell</td>
+      <td>male</td>
+      <td>26</td>
+      <td>0</td>
+      <td>0</td>
+      <td>111369</td>
+      <td>30.0000</td>
+      <td>C148</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>890</th>
+      <td>0</td>
+      <td>3</td>
+      <td>Dooley, Mr. Patrick</td>
+      <td>male</td>
+      <td>32</td>
+      <td>0</td>
+      <td>0</td>
+      <td>370376</td>
+      <td>7.7500</td>
+      <td>NaN</td>
+      <td>Q</td>
+    </tr>
+  </tbody>
+</table>
+<p>891 rows × 11 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Merging-Data">Merging Data<a class="anchor-link" href="#Merging-Data">&#182;</a></h2><p>In R we used rbind for data that had the same structure but with new rows.  Here we can do the same with the <code>concat</code> method.  You can read more about concat <a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.concat.html">here</a>. If a key is not specified, it will use the default index of the dataframe.  As you can see in the documentation though, it is also possible to specify a key.</p>
+
 </div>
 </div>
 </div>
@@ -531,7 +1521,7 @@ dtype: bool
 <div class="prompt input_prompt">In&nbsp;[133]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c">#Merging by Rows</span>
+<div class=" highlight hl-ipython2"><pre> 
 
 <span class="n">dfbyrow</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df3</span><span class="p">])</span>  <span class="c">#This is equivalent to a rowbind in R. </span>
 <span class="k">print</span> <span class="n">dfbyrow</span>
@@ -627,7 +1617,7 @@ dtype: bool
 <div class="prompt input_prompt">In&nbsp;[139]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c"># View how the index here from df has been reset and incremente</span>
+<div class=" highlight hl-ipython2"><pre><span class="c"># View how the index here from df has been reset and incremented while in the earlier example the index was kept. </span>
 <span class="n">addition</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">result</span>
 </pre></div>
@@ -676,7 +1666,9 @@ dtype: bool
 <div class="prompt input_prompt">In&nbsp;[127]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">dfbycolumns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df4</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s">&#39;inner&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span class="c">#Merging additional columns also uses the concat function</span>
+
+<span class="n">dfbycolumns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df4</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s">&#39;inner&#39;</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">dfbycolumns</span>
 </pre></div>
 
@@ -726,7 +1718,8 @@ dtype: bool
 <div class="prompt input_prompt">In&nbsp;[131]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">shortdf</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span class="c">#Here we are generating a small dataframe to be used in merging so you can see the differences in specifying inner &amp; outer, </span>
+<span class="n">shortdf</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">dfbycolumns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">shortdf</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s">&#39;inner&#39;</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">dfbycolumns</span>
 </pre></div>
@@ -767,7 +1760,8 @@ dtype: bool
 <div class="prompt input_prompt">In&nbsp;[132]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="n">shortdf</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class=" highlight hl-ipython2"><pre><span class="c">#Here, the outer does the equivalent of a left outer join for this dataset. </span>
+<span class="n">shortdf</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">dfbycolumns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">shortdf</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">join</span><span class="o">=</span><span class="s">&#39;outer&#39;</span><span class="p">)</span>
 <span class="k">print</span> <span class="n">dfbycolumns</span>
 </pre></div>
@@ -1735,19 +2729,16 @@ dtype: bool
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span class="c">#http://pandas.pydata.org/pandas-docs/stable/groupby.html</span>
-<span class="n">titantic</span><span class="o">.</span>
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>6P. You will find another dataset on github that contains additional rows of individuals <a href="https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/gh-pages/assets/data/titantic_morerows.csv">here</a>. (In reality they are duplicates but let's say we didn't know that). Provide the code to first import thist dataset and then combine it with the origional titantic dataframe into a new one called titantic_<yourlastname>.</p>
+<p>7P. You will find another dataset with additional variables that may help in the analysis <a href="https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/gh-pages/assets/data/titantic_morecolumns.csv">here</a>. Note. This is a little bit more tricky, as there currently isn't a key in the origional dataset. As a result, do the following substeps: (a). Provide code to verify the number of records in the origional and new dataset. (b). Generate a key for the origional dataset in the pattern of the new dataset. (c). Provide code to merge the two datasets titantic<em>cats</em><yourlastname>.</p>
 
 </div>
 </div>
-</div>
-
 </div>
     </div>
   </div>

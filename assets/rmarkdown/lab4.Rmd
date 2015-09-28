@@ -86,15 +86,15 @@ subset(df, a >= 20 & df$b>=18.0, select=c(a, b) )
 ## Exercises
 These toy examples are fine, but for this exercise we will use the Titaantic dataset. We want to split this out in a few different ways.  
 
-1. Subset only the *survived*, *sex*, and *age* columns and create a new dataframe with the results.
+1R. Subset only the *survived*, *sex*, and *age* columns and create a new dataframe with the results.
 
-2. Drop the *ticket* and the cabin and create a new dataframe with the results.
+2R. Drop the *ticket* and the cabin and create a new dataframe with the results.
 
-3. Split the dataset into a *train* dataframe having the first 80% of the records and a *test* dataframe having the last 20%. 
+3R. Split the dataset into a *train* dataframe having the first 80% of the records and a *test* dataframe having the last 20%. 
 
-4. Randomely sample the dataset so that there are 2 samples.
+4R. Randomely sample the dataset so that there are 2 samples.
 
-5. Create one dataframe with all of the *males* and a second with all of the *females*. 
+5R. Create one dataframe with all of the *males* and a second with all of the *females*. 
 
 
 ```{r}
@@ -171,6 +171,13 @@ df8 <- merge(df,df3,by="key",all.x=TRUE)   #x is df4 It will add NA for other (l
 df9 <- merge(df,df3,by="key", all.y=TRUE)  #y is df3 (like right outer join)
 df10 <- merge(df,df3,by="key",all.x=TRUE, all.y=TRUE)  #y is df3 (like full outer join)
 ```
+6R. You will find another dataset on github that contains additional rows of individuals [here](https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/gh-pages/assets/data/titantic_morerows.csv). (In reality they are duplicates but let's say we didn't know that). Provide the code to first import thist dataset and then combine it with the origional titantic dataframe into a new one called titantic_<yourlastname>. 
+
+7R. You will find another dataset with additional variables that may help in the analysis [here](https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/gh-pages/assets/data/titantic_morecolumns.csv). Note. This is a little bit more tricky, as there currently isn't a key in the origional dataset. As a result, do the following substeps: (a). Provide code to verify the number of records in the origional and new dataset. (b). Generate a key for the origional dataset in the pattern of the new dataset. (c). Provide code to merge the two datasets titantic_cats_<yourlastname>.
+
+
+
+
 ### Aggregage Data  
 Finally, we are going to aggregate data.  
 
