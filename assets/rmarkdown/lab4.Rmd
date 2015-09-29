@@ -99,6 +99,7 @@ These toy examples are fine, but for this exercise we will use the Titaantic dat
 
 ```{r}
 # Get the data
+#install.packages("RCurl")
 library(RCurl)  #install RCurl if this errors. 
 file <- getURL("https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv")
 titantic <- read.csv(text = file)
@@ -186,7 +187,7 @@ Finally, we are going to aggregate data.
 #This looks across all men and wormen on the titantic to average who survived.
 aggregate(titantic$survived, by=list(titantic$sex), FUN=mean, na.rm=FALSE)
 
-#You can 
+#You can further recode a variable based on whether the 
 titantic$child <- ifelse(titantic$age > 18, c("adult"), c("child")) 
 aggregate(titantic$survived, by=list(titantic$sex, titantic$child), FUN=mean, na.rm=FALSE)
 
@@ -197,26 +198,8 @@ titantic$child[titantic$age <= 2] <- "infant"
 aggregate(titantic$survived, by=list(titantic$sex, titantic$child), FUN=mean, na.rm=FALSE)
 
 
-
-
 ```
-You can see by the results that the women and children first model seemed to have some explanitory power. 
-
-We can also sum and average across all variables. This results in some warnings though.
-
-```{r}
-#aggregate(titantic$survived, by=list(titantic$survived), FUN=mean, na.rm=FALSE)
-#We get a bunch of warnings though.
-#warnings()
-
-
-```
-
-6. For the titantic dataset, you will find some addtional datasets on github that may contain additional data.
-
-Provide the code to create a dataframe which includes all of your origional data and some of the new data. 
-
-7. Create a smaller dataframe with just the numeric variables and then provide totals for the number of peopl who survived. Note:  `(fun=sum)` is the way to do a summary.  It errors out if you try to do a sum on a factor though. 
+8R. Provide totals for the number of people who survived and the number of people who died among both men and women. Note:  `(fun=sum)` is the way to do a summary.  
 
 
 
