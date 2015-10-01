@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: “Ye Zhao”
+email: “zhaoy12@rpi.edu”
+description: “BSAN”
+hobbies: “reading” 
+picture: “1.jpg” 
+github_username:  “Ye Zhao”
+twitter_username: ""
+linkedin_username: ""
+website: “”
+
+#Additional student info
+desiredJob: “Consulting”
+program: “BSAN”
