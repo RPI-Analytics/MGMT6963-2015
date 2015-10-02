@@ -88,207 +88,189 @@ df2&lt;- data.frame(v, m)
 
 #Select Specific Columns
 df[,1:2] #All rows, column 1-2</code></pre>
-<pre><code>##           a        b
-## 1  28.29667 16.96031
-## 2  19.15200 21.38923
-## 3  21.59091 17.76213
-## 4  22.44238 18.62837
-## 5  19.29737 19.44932
-## 6  19.67345 27.33432
-## 7  24.58602 24.66729
-## 8  27.43485 22.29643
-## 9  12.03277 20.48187
-## 10 19.44931 13.43176</code></pre>
+<pre><code>##            a        b
+## 1   1.093735 24.11081
+## 2  12.326459 19.82742
+## 3  14.846989 15.85290
+## 4  18.654462 26.46828
+## 5  10.511888 15.82481
+## 6  19.104696 13.31706
+## 7  16.067400 23.31764
+## 8  17.601777 24.33212
+## 9  28.328676 25.23951
+## 10 15.135773 20.77190</code></pre>
 <pre class="r"><code>df[1:2]  #All rows, column 1-2</code></pre>
-<pre><code>##           a        b
-## 1  28.29667 16.96031
-## 2  19.15200 21.38923
-## 3  21.59091 17.76213
-## 4  22.44238 18.62837
-## 5  19.29737 19.44932
-## 6  19.67345 27.33432
-## 7  24.58602 24.66729
-## 8  27.43485 22.29643
-## 9  12.03277 20.48187
-## 10 19.44931 13.43176</code></pre>
+<pre><code>##            a        b
+## 1   1.093735 24.11081
+## 2  12.326459 19.82742
+## 3  14.846989 15.85290
+## 4  18.654462 26.46828
+## 5  10.511888 15.82481
+## 6  19.104696 13.31706
+## 7  16.067400 23.31764
+## 8  17.601777 24.33212
+## 9  28.328676 25.23951
+## 10 15.135773 20.77190</code></pre>
 <pre class="r"><code>df[,c(1,3)] #We can also make the selection a vector.  This dynamically creates a vector.</code></pre>
-<pre><code>##           a        c
-## 1  28.29667 20.52424
-## 2  19.15200 15.96481
-## 3  21.59091 15.27783
-## 4  22.44238 23.00775
-## 5  19.29737 25.16366
-## 6  19.67345 22.68311
-## 7  24.58602 17.81102
-## 8  27.43485 20.14264
-## 9  12.03277 24.18614
-## 10 19.44931 25.37581</code></pre>
+<pre><code>##            a        c
+## 1   1.093735 30.89777
+## 2  12.326459 25.32011
+## 3  14.846989 29.24470
+## 4  18.654462 16.71059
+## 5  10.511888 21.67423
+## 6  19.104696 18.76297
+## 7  16.067400 26.65222
+## 8  17.601777 19.43131
+## 9  28.328676 26.76862
+## 10 15.135773 25.46423</code></pre>
 <pre class="r"><code>columns.v&lt;-c(1,3)
 df[,columns.v] #We can also make the selection a vector.  This dynamically creates a vector.</code></pre>
-<pre><code>##           a        c
-## 1  28.29667 20.52424
-## 2  19.15200 15.96481
-## 3  21.59091 15.27783
-## 4  22.44238 23.00775
-## 5  19.29737 25.16366
-## 6  19.67345 22.68311
-## 7  24.58602 17.81102
-## 8  27.43485 20.14264
-## 9  12.03277 24.18614
-## 10 19.44931 25.37581</code></pre>
+<pre><code>##            a        c
+## 1   1.093735 30.89777
+## 2  12.326459 25.32011
+## 3  14.846989 29.24470
+## 4  18.654462 16.71059
+## 5  10.511888 21.67423
+## 6  19.104696 18.76297
+## 7  16.067400 26.65222
+## 8  17.601777 19.43131
+## 9  28.328676 26.76862
+## 10 15.135773 25.46423</code></pre>
 <pre class="r"><code>df[,c(&quot;a&quot;,&quot;c&quot;)] #We can also do it by column name.</code></pre>
-<pre><code>##           a        c
-## 1  28.29667 20.52424
-## 2  19.15200 15.96481
-## 3  21.59091 15.27783
-## 4  22.44238 23.00775
-## 5  19.29737 25.16366
-## 6  19.67345 22.68311
-## 7  24.58602 17.81102
-## 8  27.43485 20.14264
-## 9  12.03277 24.18614
-## 10 19.44931 25.37581</code></pre>
+<pre><code>##            a        c
+## 1   1.093735 30.89777
+## 2  12.326459 25.32011
+## 3  14.846989 29.24470
+## 4  18.654462 16.71059
+## 5  10.511888 21.67423
+## 6  19.104696 18.76297
+## 7  16.067400 26.65222
+## 8  17.601777 19.43131
+## 9  28.328676 26.76862
+## 10 15.135773 25.46423</code></pre>
 <pre class="r"><code>columns.b &lt;- names(df) %in% c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
 df[,columns.b]</code></pre>
-<pre><code>##           a        b        c
-## 1  28.29667 16.96031 20.52424
-## 2  19.15200 21.38923 15.96481
-## 3  21.59091 17.76213 15.27783
-## 4  22.44238 18.62837 23.00775
-## 5  19.29737 19.44932 25.16366
-## 6  19.67345 27.33432 22.68311
-## 7  24.58602 24.66729 17.81102
-## 8  27.43485 22.29643 20.14264
-## 9  12.03277 20.48187 24.18614
-## 10 19.44931 13.43176 25.37581</code></pre>
+<pre><code>##            a        b        c
+## 1   1.093735 24.11081 30.89777
+## 2  12.326459 19.82742 25.32011
+## 3  14.846989 15.85290 29.24470
+## 4  18.654462 26.46828 16.71059
+## 5  10.511888 15.82481 21.67423
+## 6  19.104696 13.31706 18.76297
+## 7  16.067400 23.31764 26.65222
+## 8  17.601777 24.33212 19.43131
+## 9  28.328676 25.23951 26.76862
+## 10 15.135773 20.77190 25.46423</code></pre>
 <pre class="r"><code>#We can also drop specific columns
 df[,c(-1,-4)] #drop column a and d</code></pre>
 <pre><code>##           b        c
-## 1  16.96031 20.52424
-## 2  21.38923 15.96481
-## 3  17.76213 15.27783
-## 4  18.62837 23.00775
-## 5  19.44932 25.16366
-## 6  27.33432 22.68311
-## 7  24.66729 17.81102
-## 8  22.29643 20.14264
-## 9  20.48187 24.18614
-## 10 13.43176 25.37581</code></pre>
+## 1  24.11081 30.89777
+## 2  19.82742 25.32011
+## 3  15.85290 29.24470
+## 4  26.46828 16.71059
+## 5  15.82481 21.67423
+## 6  13.31706 18.76297
+## 7  23.31764 26.65222
+## 8  24.33212 19.43131
+## 9  25.23951 26.76862
+## 10 20.77190 25.46423</code></pre>
 <pre class="r"><code>df[!columns.b]  #drop all but d</code></pre>
 <pre><code>##           d
-## 1  23.76078
-## 2  16.25075
-## 3  25.23256
-## 4  22.36676
-## 5  35.32104
-## 6  28.92889
-## 7  13.81016
-## 8  19.91020
-## 9  21.74736
-## 10 12.67211</code></pre>
+## 1  20.29334
+## 2  27.35121
+## 3  14.82092
+## 4  12.65235
+## 5  22.05243
+## 6  21.25187
+## 7  13.64450
+## 8  19.69229
+## 9  17.36006
+## 10 21.20786</code></pre>
 <pre class="r"><code>#There is also a specific subset function
 subset(df, select=c(a, b) )</code></pre>
-<pre><code>##           a        b
-## 1  28.29667 16.96031
-## 2  19.15200 21.38923
-## 3  21.59091 17.76213
-## 4  22.44238 18.62837
-## 5  19.29737 19.44932
-## 6  19.67345 27.33432
-## 7  24.58602 24.66729
-## 8  27.43485 22.29643
-## 9  12.03277 20.48187
-## 10 19.44931 13.43176</code></pre>
+<pre><code>##            a        b
+## 1   1.093735 24.11081
+## 2  12.326459 19.82742
+## 3  14.846989 15.85290
+## 4  18.654462 26.46828
+## 5  10.511888 15.82481
+## 6  19.104696 13.31706
+## 7  16.067400 23.31764
+## 8  17.601777 24.33212
+## 9  28.328676 25.23951
+## 10 15.135773 20.77190</code></pre>
 </div>
 <div id="selecting-rows" class="section level3">
 <h3>Selecting Rows</h3>
 <p>At times we may want to split our sample for analysis. We may just want to do it in order or we may want the process to be more random.</p>
 <pre class="r"><code>df[1:5,]  #The first 5 rows and all columns.</code></pre>
-<pre><code>##          a        b        c        d
-## 1 28.29667 16.96031 20.52424 23.76078
-## 2 19.15200 21.38923 15.96481 16.25075
-## 3 21.59091 17.76213 15.27783 25.23256
-## 4 22.44238 18.62837 23.00775 22.36676
-## 5 19.29737 19.44932 25.16366 35.32104</code></pre>
+<pre><code>##           a        b        c        d
+## 1  1.093735 24.11081 30.89777 20.29334
+## 2 12.326459 19.82742 25.32011 27.35121
+## 3 14.846989 15.85290 29.24470 14.82092
+## 4 18.654462 26.46828 16.71059 12.65235
+## 5 10.511888 15.82481 21.67423 22.05243</code></pre>
 <pre class="r"><code>df[c(1,3,8),]  #Just a selection of a few rows</code></pre>
-<pre><code>##          a        b        c        d
-## 1 28.29667 16.96031 20.52424 23.76078
-## 3 21.59091 17.76213 15.27783 25.23256
-## 8 27.43485 22.29643 20.14264 19.91020</code></pre>
+<pre><code>##           a        b        c        d
+## 1  1.093735 24.11081 30.89777 20.29334
+## 3 14.846989 15.85290 29.24470 14.82092
+## 8 17.601777 24.33212 19.43131 19.69229</code></pre>
 <pre class="r"><code>rows&lt;-c(1,3,8)
 df[rows,]</code></pre>
-<pre><code>##          a        b        c        d
-## 1 28.29667 16.96031 20.52424 23.76078
-## 3 21.59091 17.76213 15.27783 25.23256
-## 8 27.43485 22.29643 20.14264 19.91020</code></pre>
+<pre><code>##           a        b        c        d
+## 1  1.093735 24.11081 30.89777 20.29334
+## 3 14.846989 15.85290 29.24470 14.82092
+## 8 17.601777 24.33212 19.43131 19.69229</code></pre>
 <pre class="r"><code>#For a random sample, let's first create a random vector of the row numbers.
 n&lt;-nrow(df)
 sample &lt;- sample(10, 10, replace=F)
 sample</code></pre>
-<pre><code>##  [1]  1  8 10  9  5  3  4  6  7  2</code></pre>
+<pre><code>##  [1]  6  8  1  7  9  5 10  2  3  4</code></pre>
 <pre class="r"><code>#notice how the array is being used to sample out the rows. 
 df[sample[1:5],]</code></pre>
 <pre><code>##           a        b        c        d
-## 1  28.29667 16.96031 20.52424 23.76078
-## 8  27.43485 22.29643 20.14264 19.91020
-## 10 19.44931 13.43176 25.37581 12.67211
-## 9  12.03277 20.48187 24.18614 21.74736
-## 5  19.29737 19.44932 25.16366 35.32104</code></pre>
+## 6 19.104696 13.31706 18.76297 21.25187
+## 8 17.601777 24.33212 19.43131 19.69229
+## 1  1.093735 24.11081 30.89777 20.29334
+## 7 16.067400 23.31764 26.65222 13.64450
+## 9 28.328676 25.23951 26.76862 17.36006</code></pre>
 <pre class="r"><code>df[sample[6:10],]</code></pre>
-<pre><code>##          a        b        c        d
-## 3 21.59091 17.76213 15.27783 25.23256
-## 4 22.44238 18.62837 23.00775 22.36676
-## 6 19.67345 27.33432 22.68311 28.92889
-## 7 24.58602 24.66729 17.81102 13.81016
-## 2 19.15200 21.38923 15.96481 16.25075</code></pre>
+<pre><code>##           a        b        c        d
+## 5  10.51189 15.82481 21.67423 22.05243
+## 10 15.13577 20.77190 25.46423 21.20786
+## 2  12.32646 19.82742 25.32011 27.35121
+## 3  14.84699 15.85290 29.24470 14.82092
+## 4  18.65446 26.46828 16.71059 12.65235</code></pre>
 <pre class="r"><code>#Remember we can select out the a variable of a dataframe using df$a
 df[ which(df$a&gt;=20.0), ] </code></pre>
 <pre><code>##          a        b        c        d
-## 1 28.29667 16.96031 20.52424 23.76078
-## 3 21.59091 17.76213 15.27783 25.23256
-## 4 22.44238 18.62837 23.00775 22.36676
-## 7 24.58602 24.66729 17.81102 13.81016
-## 8 27.43485 22.29643 20.14264 19.91020</code></pre>
+## 9 28.32868 25.23951 26.76862 17.36006</code></pre>
 <pre class="r"><code>df[ which(df$a&gt;=20 &amp; df$b&gt;=18.0), ]  # &amp; is the and sign</code></pre>
 <pre><code>##          a        b        c        d
-## 4 22.44238 18.62837 23.00775 22.36676
-## 7 24.58602 24.66729 17.81102 13.81016
-## 8 27.43485 22.29643 20.14264 19.91020</code></pre>
+## 9 28.32868 25.23951 26.76862 17.36006</code></pre>
 <pre class="r"><code>df[ which(df$a&gt;=20 | df$b&gt;=18.0), ]  # | is the or sign</code></pre>
-<pre><code>##          a        b        c        d
-## 1 28.29667 16.96031 20.52424 23.76078
-## 2 19.15200 21.38923 15.96481 16.25075
-## 3 21.59091 17.76213 15.27783 25.23256
-## 4 22.44238 18.62837 23.00775 22.36676
-## 5 19.29737 19.44932 25.16366 35.32104
-## 6 19.67345 27.33432 22.68311 28.92889
-## 7 24.58602 24.66729 17.81102 13.81016
-## 8 27.43485 22.29643 20.14264 19.91020
-## 9 12.03277 20.48187 24.18614 21.74736</code></pre>
+<pre><code>##            a        b        c        d
+## 1   1.093735 24.11081 30.89777 20.29334
+## 2  12.326459 19.82742 25.32011 27.35121
+## 4  18.654462 26.46828 16.71059 12.65235
+## 7  16.067400 23.31764 26.65222 13.64450
+## 8  17.601777 24.33212 19.43131 19.69229
+## 9  28.328676 25.23951 26.76862 17.36006
+## 10 15.135773 20.77190 25.46423 21.20786</code></pre>
 <pre class="r"><code>#We can also use the subset function to select out columes
 subset(df, a &gt;= 20 )</code></pre>
 <pre><code>##          a        b        c        d
-## 1 28.29667 16.96031 20.52424 23.76078
-## 3 21.59091 17.76213 15.27783 25.23256
-## 4 22.44238 18.62837 23.00775 22.36676
-## 7 24.58602 24.66729 17.81102 13.81016
-## 8 27.43485 22.29643 20.14264 19.91020</code></pre>
+## 9 28.32868 25.23951 26.76862 17.36006</code></pre>
 <pre class="r"><code>subset(df, a &gt;= 20 &amp; df$b&gt;=18.0 )</code></pre>
 <pre><code>##          a        b        c        d
-## 4 22.44238 18.62837 23.00775 22.36676
-## 7 24.58602 24.66729 17.81102 13.81016
-## 8 27.43485 22.29643 20.14264 19.91020</code></pre>
+## 9 28.32868 25.23951 26.76862 17.36006</code></pre>
 <pre class="r"><code>subset(df, a &gt;= 20 &amp; df$b&gt;=18.0 )</code></pre>
 <pre><code>##          a        b        c        d
-## 4 22.44238 18.62837 23.00775 22.36676
-## 7 24.58602 24.66729 17.81102 13.81016
-## 8 27.43485 22.29643 20.14264 19.91020</code></pre>
+## 9 28.32868 25.23951 26.76862 17.36006</code></pre>
 <pre class="r"><code>#We can also combine column and row selection as follows
 subset(df, a &gt;= 20 &amp; df$b&gt;=18.0, select=c(a, b) )</code></pre>
 <pre><code>##          a        b
-## 4 22.44238 18.62837
-## 7 24.58602 24.66729
-## 8 27.43485 22.29643</code></pre>
+## 9 28.32868 25.23951</code></pre>
 </div>
 </div>
 <div id="exercises" class="section level2">
@@ -305,24 +287,55 @@ subset(df, a &gt;= 20 &amp; df$b&gt;=18.0, select=c(a, b) )</code></pre>
 <div id="option-1" class="section level4">
 <h4>OPTION 1</h4>
 <p>If sharing is working between the guest virual machine and the host, the easiest way is to sync your Git repository and then load the data from the shared drive. Look at the repository directory.</p>
-<p>setwd(‘/vagrant/data’) list.files() titantic &lt;- read.csv(‘titantic_train.csv’, header = TRUE )</p>
+<p><code>r  setwd('/vagrant/data')  list.files()</code></p>
+<p><code>## [1] &quot;titantic_morecolumns.csv&quot; &quot;titantic_morerows.csv&quot;     ## [3] &quot;titantic_train.csv&quot;</code></p>
+<p><code>r  titantic &lt;- read.csv('titantic_train.csv', header = TRUE )</code></p>
 </div>
-</div>
-<div id="option-2" class="section level3">
-<h3>OPTION 2</h3>
+<div id="option-2" class="section level4">
+<h4>OPTION 2</h4>
 <p>You can import a dataframe from github directly using the gui with import dataset-&gt;from web url.<br /><a href="https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv"><a href="https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv" class="uri">https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv</a></a> Note. During the import process on the top left you can specify the dataframe name. By default it will come through as titantic_train. You can create a new one called titantic using the code below. <code>titantic&lt;-titantic_train</code></p>
 </div>
-<div id="option-3" class="section level3">
-<h3>OPTION 3</h3>
+<div id="option-3" class="section level4">
+<h4>OPTION 3</h4>
+<p>R doesen’t seem to have a real robust method of dealing with files and https, which I have seen cause some problems. Instead, you can <code>vagrant ssh</code> into the <code>/home/vagrant</code> directory of the virtual machine this is default. Then enter <code>wget https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv</code> from the terminal. This will download the file directly to the linux virtual machine.</p>
+<pre class="r"><code>##You only need to set working directory if you changed the working directory to something else. This is default.
+setwd('/home/vagrant') 
+list.files()</code></pre>
+<pre><code>##  [1] &quot;1_twitter.ipynb&quot;                   
+##  [2] &quot;_Appendix B - OAuth Primer.ipynb&quot;  
+##  [3] &quot;BeautifulSoup.ipynb&quot;               
+##  [4] &quot;Chapter 0 - Preface.ipynb&quot;         
+##  [5] &quot;Chapter 1 - Mining Twitter.ipynb&quot;  
+##  [6] &quot;Chapter 4 - Mining Google+.ipynb&quot;  
+##  [7] &quot;Chapter 9 - Twitter Cookbook.ipynb&quot;
+##  [8] &quot;Class 3 More Python Basics. .ipynb&quot;
+##  [9] &quot;data&quot;                              
+## [10] &quot;downjason.ipynb.json&quot;              
+## [11] &quot;index.html&quot;                        
+## [12] &quot;index.html.1&quot;                      
+## [13] &quot;install.sh&quot;                        
+## [14] &quot;Lab2.ipynb&quot;                        
+## [15] &quot;lab2solution.ipynb&quot;                
+## [16] &quot;Lab2-webmining.ipynb&quot;              
+## [17] &quot;Lab 3 - Twitter-Copy1.ipynb&quot;       
+## [18] &quot;Lab 3 - Twitter.ipynb&quot;             
+## [19] &quot;Lab3_Twitter_solution.ipynb&quot;       
+## [20] &quot;lab4.html&quot;                         
+## [21] &quot;Lab4.ipynb&quot;                        
+## [22] &quot;lab4.Rmd&quot;                          
+## [23] &quot;nestedforloop.R&quot;                   
+## [24] &quot;R&quot;                                 
+## [25] &quot;spark_mooc_version&quot;                
+## [26] &quot;spark_notebook.py&quot;                 
+## [27] &quot;titantic_train.csv&quot;                
+## [28] &quot;titantic_train.csv.1&quot;              
+## [29] &quot;Untitled1.ipynb&quot;                   
+## [30] &quot;Untitled2.ipynb&quot;                   
+## [31] &quot;Untitled3.ipynb&quot;                   
+## [32] &quot;Untitled.ipynb&quot;</code></pre>
+<pre class="r"><code>titantic &lt;- read.csv('titantic_train.csv', header = TRUE )</code></pre>
 </div>
 </div>
-<div id="r-doesent-seem-to-have-a-real-robust-method-of-dealing-with-files-and-https-which-i-have-seen-cause-some-problems." class="section level1">
-<h1>R doesen’t seem to have a real robust method of dealing with files and https, which I have seen cause some problems.</h1>
-<p>Instead, you can <code>vagrant ssh</code> into the <code>/home/vagrant</code> directory of the virtual machine this is default. Then enter <code>wget https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv</code> from the terminal. This will download the file directly to the linux virtual machine.</p>
-</div>
-<div id="setwdhomevagrant-you-only-need-to-do-this-if-you-changed-the-working-directory-to-something-else." class="section level1">
-<h1>setwd(‘/home/vagrant’) You only need to do this if you changed the working directory to something else.</h1>
-<p>list.files() titantic &lt;- read.csv(‘titantic_train.csv’, header = TRUE )</p>
 <div id="merging-data" class="section level3">
 <h3>Merging data</h3>
 <p>Merging datasets from different sources can be very common for a data scientist. You might need to</p>
@@ -347,26 +360,26 @@ df4&lt;-data.frame(cbind(key,m3))
 #First let's merge rows for the same columns by combining df3 with rbind.  Key is that these have to have the same columns
 rbind(df2,df3)</code></pre>
 <pre><code>##     key         e         f         g         h
-## 1     1  994.9555 1001.7224  996.2291 1002.0497
-## 2     2  999.8229  989.9450 1003.9419 1007.3642
-## 3     3  990.9490 1001.8718 1001.7768 1001.6451
-## 4     4 1002.0310 1011.5003 1004.3698  994.7218
-## 5     5  999.9884 1003.8886  995.7168  996.6390
-## 6     6  997.5670 1006.2106 1005.2332  998.6979
-## 7     7 1004.0810 1002.8236  994.0189 1007.5582
-## 8     8 1000.9693  994.9842 1000.5285  997.4983
-## 9     9  992.4549  996.0201 1003.1858 1008.0533
-## 10   10  999.6921 1007.5508 1001.5598 1004.6111
-## 11   11 1010.0191  994.8553 1004.3400 1002.2067
-## 21   12  996.5641  999.9859  999.1172  992.7260
-## 31   13 1001.2322 1002.8906 1007.0500 1001.6698
-## 41   14  997.8404 1016.0659  998.7827 1004.4051
-## 51   15 1009.0772  995.0750  995.9796 1001.6275
-## 61   16  998.2355  997.6782  999.3547  995.1129
-## 71   17 1010.5499  994.4112  998.6680  997.3635
-## 81   18 1003.1881  995.0660 1000.8161 1003.3708
-## 91   19  996.7001 1002.6969 1003.6045  999.1894
-## 101  20 1003.9144  998.2554  994.1789  993.5266</code></pre>
+## 1     1  998.5404  995.5929  999.6785  996.9909
+## 2     2  999.8719  999.9656 1002.2861 1002.3753
+## 3     3  993.9311 1003.7309 1004.2870 1003.8519
+## 4     4 1000.8596  992.3083  994.3755 1000.5741
+## 5     5  997.6221  996.0246  996.4049 1000.3972
+## 6     6 1006.3881  998.4654 1003.0841 1001.7868
+## 7     7 1005.4714 1005.0491 1002.3106  996.8054
+## 8     8  999.1908 1009.5933  992.5427  993.7408
+## 9     9 1007.5241 1004.4034 1003.6821 1010.8393
+## 10   10  993.4326 1001.4877 1003.6487  996.8948
+## 11   11 1000.5011 1004.2833 1010.4017  998.0157
+## 21   12 1001.8712  999.8168 1003.5189  992.4346
+## 31   13 1006.2561  999.2939  992.9610  999.3590
+## 41   14 1003.7306 1004.7246  995.9031 1000.6784
+## 51   15 1003.3538  997.9591 1005.6200 1001.8227
+## 61   16 1003.4176 1004.0613  991.4655  999.8996
+## 71   17 1007.3612  999.7960 1012.6482  997.6021
+## 81   18  998.5478  996.3340  989.7876  998.9176
+## 91   19  993.1003 1004.0298 1007.9833  989.9835
+## 101  20  995.3712 1005.8793 1005.0117 1006.3844</code></pre>
 <pre class="r"><code>#let's say we have a dataframe that doesn't have the &quot;e&quot; column
 df5&lt;-df3[,-2] #Drop the e column</code></pre>
 <p>By then entering the <code>rbind(df2,df5)</code> command we will get the error: <code>Error in rbind(deparse.level, ...) :    numbers of columns of arguments do not match</code></p>
@@ -374,64 +387,64 @@ df5&lt;-df3[,-2] #Drop the e column</code></pre>
 <pre class="r"><code>df5$e=NA
 df5</code></pre>
 <pre><code>##    key         f         g         h  e
-## 1   11  994.8553 1004.3400 1002.2067 NA
-## 2   12  999.9859  999.1172  992.7260 NA
-## 3   13 1002.8906 1007.0500 1001.6698 NA
-## 4   14 1016.0659  998.7827 1004.4051 NA
-## 5   15  995.0750  995.9796 1001.6275 NA
-## 6   16  997.6782  999.3547  995.1129 NA
-## 7   17  994.4112  998.6680  997.3635 NA
-## 8   18  995.0660 1000.8161 1003.3708 NA
-## 9   19 1002.6969 1003.6045  999.1894 NA
-## 10  20  998.2554  994.1789  993.5266 NA</code></pre>
+## 1   11 1004.2833 1010.4017  998.0157 NA
+## 2   12  999.8168 1003.5189  992.4346 NA
+## 3   13  999.2939  992.9610  999.3590 NA
+## 4   14 1004.7246  995.9031 1000.6784 NA
+## 5   15  997.9591 1005.6200 1001.8227 NA
+## 6   16 1004.0613  991.4655  999.8996 NA
+## 7   17  999.7960 1012.6482  997.6021 NA
+## 8   18  996.3340  989.7876  998.9176 NA
+## 9   19 1004.0298 1007.9833  989.9835 NA
+## 10  20 1005.8793 1005.0117 1006.3844 NA</code></pre>
 <pre class="r"><code>#Notice that it doesn't matter that columns are not in the same order.
 rbind(df2,df5)</code></pre>
 <pre><code>##     key         e         f         g         h
-## 1     1  994.9555 1001.7224  996.2291 1002.0497
-## 2     2  999.8229  989.9450 1003.9419 1007.3642
-## 3     3  990.9490 1001.8718 1001.7768 1001.6451
-## 4     4 1002.0310 1011.5003 1004.3698  994.7218
-## 5     5  999.9884 1003.8886  995.7168  996.6390
-## 6     6  997.5670 1006.2106 1005.2332  998.6979
-## 7     7 1004.0810 1002.8236  994.0189 1007.5582
-## 8     8 1000.9693  994.9842 1000.5285  997.4983
-## 9     9  992.4549  996.0201 1003.1858 1008.0533
-## 10   10  999.6921 1007.5508 1001.5598 1004.6111
-## 11   11        NA  994.8553 1004.3400 1002.2067
-## 21   12        NA  999.9859  999.1172  992.7260
-## 31   13        NA 1002.8906 1007.0500 1001.6698
-## 41   14        NA 1016.0659  998.7827 1004.4051
-## 51   15        NA  995.0750  995.9796 1001.6275
-## 61   16        NA  997.6782  999.3547  995.1129
-## 71   17        NA  994.4112  998.6680  997.3635
-## 81   18        NA  995.0660 1000.8161 1003.3708
-## 91   19        NA 1002.6969 1003.6045  999.1894
-## 101  20        NA  998.2554  994.1789  993.5266</code></pre>
+## 1     1  998.5404  995.5929  999.6785  996.9909
+## 2     2  999.8719  999.9656 1002.2861 1002.3753
+## 3     3  993.9311 1003.7309 1004.2870 1003.8519
+## 4     4 1000.8596  992.3083  994.3755 1000.5741
+## 5     5  997.6221  996.0246  996.4049 1000.3972
+## 6     6 1006.3881  998.4654 1003.0841 1001.7868
+## 7     7 1005.4714 1005.0491 1002.3106  996.8054
+## 8     8  999.1908 1009.5933  992.5427  993.7408
+## 9     9 1007.5241 1004.4034 1003.6821 1010.8393
+## 10   10  993.4326 1001.4877 1003.6487  996.8948
+## 11   11        NA 1004.2833 1010.4017  998.0157
+## 21   12        NA  999.8168 1003.5189  992.4346
+## 31   13        NA  999.2939  992.9610  999.3590
+## 41   14        NA 1004.7246  995.9031 1000.6784
+## 51   15        NA  997.9591 1005.6200 1001.8227
+## 61   16        NA 1004.0613  991.4655  999.8996
+## 71   17        NA  999.7960 1012.6482  997.6021
+## 81   18        NA  996.3340  989.7876  998.9176
+## 91   19        NA 1004.0298 1007.9833  989.9835
+## 101  20        NA 1005.8793 1005.0117 1006.3844</code></pre>
 <p>That merged some rows with the same structure. But let’s say we have to merge columns. For that we need a common key.</p>
 <pre class="r"><code>df6 &lt;- merge(df,df2,by=&quot;key&quot;)
 df6</code></pre>
-<pre><code>##    key        a         b        c        d         e         f         g
-## 1    1 24.89308  8.995589 22.44871 18.63857  994.9555 1001.7224  996.2291
-## 2    2 20.00132 20.620353 15.22366 17.68659  999.8229  989.9450 1003.9419
-## 3    3 27.90071 23.537536 23.60330 20.85106  990.9490 1001.8718 1001.7768
-## 4    4 17.29144 28.821929 15.94159 26.69783 1002.0310 1011.5003 1004.3698
-## 5    5 27.66960 34.532616 19.45815 17.69776  999.9884 1003.8886  995.7168
-## 6    6 15.50131 19.374113 22.38083 32.42696  997.5670 1006.2106 1005.2332
-## 7    7 20.96350 15.580660 20.28861 15.91081 1004.0810 1002.8236  994.0189
-## 8    8 16.27149 16.293393 13.69939 19.24001 1000.9693  994.9842 1000.5285
-## 9    9 33.77133 15.028582 16.87715 17.86978  992.4549  996.0201 1003.1858
-## 10  10 26.43529 16.934389 31.36847 21.58241  999.6921 1007.5508 1001.5598
+<pre><code>##    key        a        b        c        d         e         f         g
+## 1    1 23.22678 18.10999 13.00721 15.34173  998.5404  995.5929  999.6785
+## 2    2 17.20738 16.08315 14.93269 16.33102  999.8719  999.9656 1002.2861
+## 3    3 12.11747 17.19723 24.50265 16.99374  993.9311 1003.7309 1004.2870
+## 4    4 21.07022 27.85910 19.68360 17.63353 1000.8596  992.3083  994.3755
+## 5    5 20.58616 19.61494 16.60385 24.35142  997.6221  996.0246  996.4049
+## 6    6 22.85258 24.49959 22.92062 12.03308 1006.3881  998.4654 1003.0841
+## 7    7 21.77243 25.71287 14.68309 29.89312 1005.4714 1005.0491 1002.3106
+## 8    8 22.27872 24.31091 20.87042 13.28731  999.1908 1009.5933  992.5427
+## 9    9 15.59008 19.54362 22.09654 10.67335 1007.5241 1004.4034 1003.6821
+## 10  10 16.86036 21.89450 20.94156 26.21374  993.4326 1001.4877 1003.6487
 ##            h
-## 1  1002.0497
-## 2  1007.3642
-## 3  1001.6451
-## 4   994.7218
-## 5   996.6390
-## 6   998.6979
-## 7  1007.5582
-## 8   997.4983
-## 9  1008.0533
-## 10 1004.6111</code></pre>
+## 1   996.9909
+## 2  1002.3753
+## 3  1003.8519
+## 4  1000.5741
+## 5  1000.3972
+## 6  1001.7868
+## 7   996.8054
+## 8   993.7408
+## 9  1010.8393
+## 10  996.8948</code></pre>
 <pre class="r"><code>#If we try to merge by a key were there is no match, it will result in 0 rows.
 df7 &lt;- merge(df,df3,by=&quot;key&quot;)
 df7</code></pre>
