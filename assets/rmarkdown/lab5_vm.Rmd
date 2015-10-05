@@ -1,0 +1,357 @@
+---
+title: "Lab5 Missing Values and Introduction to Feature Creation"
+output: html_document
+---
+
+#Review
+##Getting External Data Into Rstudio Server
+
+### Getting CSV Files into RStudio
+
+If your are having trouble getting file into RStudio, here are some options.
+
+####OPTION 1
+If sharing is working between the guest virual machine and the host, the easiest way is to sync your Git repository and then load the data from the shared drive. Look at the repository directory.
+```{r}
+setwd('/vagrant/data')
+list.files()
+titanic <- read.csv('titantic_train.csv', header = TRUE )
+```
+
+####OPTION 2
+You can import a dataframe from github directly using the gui with import dataset->from web url.  
+[https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv](https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv)
+Note. During the import process on the top left you can specify the dataframe name.  By default it will come through as titantic_train. You can create a new one called titantic using the code below.
+`titanic<-titantic_train`
+
+
+####OPTION 3
+R doesen't seem to have a real robust method of dealing with files and https, which I have seen cause some problems. 
+Instead, you can `vagrant ssh` into the `/home/vagrant` directory of the virtual machine this is default. Then enter `wget https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv` from the terminal. This will download the file directly to the linux virtual machine. 
+```{r}
+##You only need to set working directory if you changed the working directory to something else. This is default.
+setwd('/home/vagrant') 
+list.files()
+titanic <- read.csv('titantic_train.csv', header = TRUE )
+```
+
+
+##Three Ways to Subset Data 
+
+```{r}
+# This is a function that 
+males<-subset(titanic, sex=='male' )
+females<-subset(titanic, sex=='female' )
+
+#Males/Females Array via a vector listing the desired rows in an array.  
+malesarray<-which(titanic$sex=='male')
+malesarray
+femalesarray<-which(titanic$sex=='female')
+males2<-titanic[ malesarray, ] 
+females2<-titanic[ femalesarray, ] 
+
+#Males/Females Array via a boolean vector indicating appropriate rows.
+malesarray2<-ifelse(titanic$sex=='male' , TRUE , FALSE)
+males3<-titanic[ malesarray2, ] 
+females3<-titanic[ !malesarray2, ] 
+```
+
+#Aggregation
+
+Aggregation is useful for many different aspects of analysis.  Let's take a look at a few with the titanic dataset.  
+
+```{r}
+#This will give us a count of the frequency at each level.  
+table(titanic$survived)
+table(titanic$sex)
+table(titanic$sibsp)
+
+#This does the same as the following. 
+sum(titanic$survived)
+sum(!titanic$survived)
+
+#We can also generate based on proportions (percentages). This gives the propotion in each category.
+prop.table(table(titanic$survived))
+prop.table(table(titanic$sex))
+prop.table(table(titanic$sibsp))
+
+#We can also combine varaiables to create cross-tabs to get an initial idea of the role of different variables. 
+table(titanic$sex, titanic$survived)
+table(titanic$sibsp, titanic$survived)
+
+#This gives the percentage in each category.  
+prop.table(table(titanic$sex, titanic$survived))
+
+summary(titanic$age)
+summary(titanic)
+titanic$child <- 0
+titanic$child[titanic$age < 18] <- 1
+#Here sum adds the survived
+aggregate(survived ~ child + sex, data=titanic, FUN=sum)
+#Length gives the number of each category
+aggregate(survived ~ child + sex, data=titanic, FUN=length)
+#This gives the percentage
+aggregate(survived ~ child + sex, data=titanic, FUN=function(x) {sum(x)/length(x)})
+
+aggregate(survived ~ sex, data=titanic, FUN=function(x) {sum(x)/length(x)})
+
+
+```
+
+#Misc. Functions
+```{r}
+#View(titanic) #show data browser
+names(titanic) #show the names
+dim(titanic) #show the dimensions of the data frame
+head(titanic, 2) #show the first 2 records
+tail(titanic, 4) #show the final 2 records
+summary(titanic) #summarize all variables
+str(titanic) #shows the structure of an R Object
+```
+
+
+#Missing Values
+
+First let's generate our our sample data that inclues a few missing values. 
+
+```{r}
+m<- matrix(rnorm(40, mean=20, sd=5), nrow=10, ncol=4)
+m[c(1,2,8),c(1,3,4)]=NA
+colnames(m)<-(c("a","b","c","d"))
+df<- as.data.frame(m)
+df[c(1,2,8),c(1,3,4)]="NONE"
+df
+
+
+```
+In our sample dataset, we can see that the data was coded as "NONE" where it was missing. One of the first things you should check is that the data has been coded into the appropriate type.  Here, if we check it we can see that the "NONE" variables have caused some numeric variables to be coded as strings.
+
+```{r}
+# We can see the dataframe structure here.
+str(df)
+summary(df)
+```
+We can deal with this issue by recoding each of the columns so that "NONE" is recoded to NA. Here, the first variable `df$a` gives the variables.  The subsequent `df$a=="NONE"` selects out the rows that have NONE.  Then the `<- NA` assigns `NA` to those rows which are selected. 
+
+
+```{r}
+
+df$a[df$a=="NONE"] <- NA
+df$c[df$c=="NONE"] <- NA
+df$d[df$d=="NONE"] <- NA
+df
+str(df)
+summary(df)
+```
+
+After we have removed the string variable, we then need to go through and `transform` the dataframe to have the appropriate structure (with numeric).
+
+```{r}
+df<-transform(df, a = as.numeric(a), c=as.numeric(c), d=as.numeric(d))
+str(df)
+
+sum(is.na(df$a)) # Do this to count the NA in a
+
+```
+
+In cases where you are important a CSV file of data with missing values, it is possible to fix the coded variables by just telling R how they are coded.  
+
+```{r}
+
+#This is in the repository under /data. 
+setwd('/vagrant/data')
+df3 <- read.csv('df_none.csv', header = TRUE, na.strings = "NONE" )
+df3
+```
+
+
+
+Next we want to be able to diagnose missing values in our dataset.  
+
+```{r}
+
+#The summary variable will give us the number of NA's in each. 
+summary(df)
+
+#
+str(df)
+
+#The complete.cases function provides a boolean vector with a True if the row has no missing variables and False if the row has missing variables.  
+complete.cases(df)
+df.complete<-df[complete.cases(df),]
+df.missing<-df[!complete.cases(df),]
+
+#Alternate syntax to remove NA via a function.
+df.complete2 <- na.omit(df)
+
+#Let's find total. 
+c('Complete:', nrow(df.complete), 'Missing:', nrow(df.missing))
+
+
+```
+
+#Now we can fix the missing value by doing a very simple model of taking the mean of each column and then substituting.
+
+```{r}
+# Taking the mean of column 1 of the dataframe doesn't work because of NA's
+mean(df[,1]) 
+
+# Returns the mean of column 1 of the dataframe
+df.c1=mean(df[,1], na.rm=TRUE)
+
+#Or we can specify the complete dataframe. 
+df.c1=mean(df.complete[,1]) # returns the mean of column 1 of the dataframe
+
+#This will substitute the mean for all missing values. 
+df$c[is.na(df$c)] <- df.c1
+
+#We could do the whole step in one step.
+df$d[is.na(df$d)] <- mean(df$d, na.rm=TRUE)
+
+
+
+```
+
+1R. Go ahead and provide the code to fix column a and print out your final dataframe with everything fixed.
+
+2R. How many missing values are there for the age field? 
+
+3R. Fill in the age value with the median. 
+
+4R. Count the number of NA values in the titanic$embarked and titanic$fare. Then look at the data.  What is going on?  Recode the data so that missing values are coded as NA. 
+
+5R. Determine what is the most common value for titanic$embarked. Recode NA's to the most common value. 
+
+
+
+Whle we haven't looked at any "models" yet, here you can see a simple regression analysis used to predict age from the fare, sex, sibsp fields with regression analysis. This creates a simple function were age=f(fare,sex,sibsp)
+```{r}
+
+titanic.complete<-titanic[complete.cases(titanic),]
+titanic.missing<-titanic[!complete.cases(titanic),]
+
+# Impute Age for missing values using regression analysis with age as the DV
+m.age <- lm(age ~ fare + sex + sibsp, data = titanic.complete)
+summary(m.age)
+m.age2 <- lm(age ~ fare + sex + sibsp, data = titanic)
+summary(m.age2)
+
+#Lot's of nested fectors being used to select the appropriate rows.
+titanic$age[is.na(titanic$age)]<-predict(m.age, newdata= titanic[is.na(titanic$age),]) 
+                                           
+```
+
+6R. Is there any difference between m.age and m.age2? Why or Why not?
+
+###Intoduction to Feature Extraction
+
+Here we are going to go through the process of creating new features from the Titanic dataset. 
+
+7R. Explain the process of new feature creation in general and provide 3 examples from Titanic.
+
+
+Let's start with the process of *recoding a continuous variable into a categorical variable*
+
+```{r}
+#RECODING CONTINUOU
+#This is the simple child coding into a variable which is 0 or 1. 
+titanic$child <- 0
+titanic$child[titanic$age < 18] <- 1
+
+#This recodes to a character vector
+titanic$childcat <- ifelse(titanic$age > 18, c("adult"), c("child")) 
+
+#Note that this is a character vector by defauld and we have to change to factor. 
+str(titanic$childcat) 
+titanic<-transform(titanic, childcat = as.factor(childcat))
+str(titanic$childcat) 
+
+```
+
+8R. Create a variable *childcat2* that that is a factor variable with 4 levels (infant[>2], child[2-12], teen[13-18], adult[>18]). 
+
+
+
+```{r}
+titanic$section<-titanic$cabin
+names(titanic)
+#View(titanic)
+#This 
+titanic$section <- gsub("[0-9]", "", titanic$section)
+# returns string whitespace using regular expressions.
+titanic$section <-gsub(" ", "", titanic$section)
+
+#This returns an integer with the number of cabins associated with a name. 
+titanic$cabins<-nchar(titanic$section)
+
+#This creates a new variable using only the first cabin.
+titanic$section2 <-substr(titanic$section, 1, 1)
+
+#Recode as multiple cabins if have multible cabins.
+titanic$section2[titanic$cabins>=2]<-"M" 
+
+#Now that we are done recoding, we can change to a factor.
+titanic<-transform(titanic, section2 = as.factor(section2))
+
+summary(titanic$section2)
+
+#
+aggregate(survived ~ section2 + sex, data=titanic, FUN=function(x) {sum(x)/length(x)})
+
+```
+
+9R. Recode the data by fare into a factor variable called *farecat*.  The categories should be, under 10, 10-20, 30+.  If the value is NA, make it most frequent category.  
+
+
+```{r}
+
+#Grep searches for a string, returning true. 
+
+for(i in 1:length(titanic$name)){
+  titanic$title[i] <- 'None'
+  if(grepl('Mr.', titanic$name[i])){titanic$title[i] <- 'Mr'}
+  if(grepl('Miss.', titanic$name[i])){titanic$title[i] <- 'Miss'}
+  if(grepl('Mrs.', titanic$name[i])){titanic$title[i] <- 'Mrs'}
+}
+titanic$title <- as.factor(titanic$title)
+
+#As Mentioned though, we like to not do for loops if possible. 
+titanic$title2 <- "None"
+titanic$title2[grepl('Mr.', titanic$name)]<-"Mr."
+titanic$title2[grepl('Miss.', titanic$name)]<-"Miss."
+titanic$title2[grepl('Mrs.', titanic$name)]<-"Mrs."
+titanic$title2 <- as.factor(titanic$title2)
+
+summary(titanic$title)
+summary(titanic$title2)
+```
+
+10R. For both the for loop and other method, add titles for "Master", "Doctor", and "Major".
+
+11R. Create a feature indicating whether someone is of Irish decent (Mc). 
+
+###Cross Validation
+
+In the past lab we learned how to manually create a random array and select a training and test set using that training set.  This is going to do the sampe thing but with a slightly different 
+```{r}
+train.length=round(nrow(df)/2, 0)
+train=sample(nrow(df),train.length, replace=FALSE)
+
+```
+
+We can then select out our sample.  
+```{r}
+dfa=df[train,]
+dfb=df[-train,]
+```
+
+
+
+
+
+
+
+
+
+
+
