@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Bobby Javaid"
+email: "javaib@rpi.edu"
+description: "Highly motived and business minded entrepreneur."
+hobbies: "Weight lifting, playing basketball, cooking." 
+picture: "/img/linked.jpg" 
+github_username:  "javaib"
+twitter_username: ""
+linkedin_username: "https://www.linkedin.com/in/babarjavaid"
+website: ""
+
+#Additional student info
+desiredJob: "Operations, Supply Chain MGMT related or consulting"
+program: "MS Supply Chain MGMT"

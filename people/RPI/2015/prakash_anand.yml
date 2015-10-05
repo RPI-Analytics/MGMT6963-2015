@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Anand Prakash"
+email: "prakaa@rpi.edu"
+description: "In search of the unknown"
+hobbies: "Reading , travelling" 
+picture: "C:\Users\Admin\Desktop\MGMT6963-2015\image\anand.jpg" 
+github_username:  "anandprakas"
+twitter_username: ""
+linkedin_username: "https://www.linkedin.com/in/anand1prakash1"
+website: ""
+
+#Additional student info
+desiredJob: "Consultant"
+program: "MS Management"

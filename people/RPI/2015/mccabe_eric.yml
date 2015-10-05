@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Eric McCabe"
+email: "mccabe@rpi.edu"
+description: "I am a co-terminal student with an undergrad in Industrial and Management Engineering."
+hobbies: "Olympic weightlifitng." 
+picture: "/img/mccabe_eric.jpg" 
+github_username:  "erm93ct"
+twitter_username: "blank"
+linkedin_username: "https://www.linkedin.com/pub/eric-r-mccabe/65/732/563"
+website: "blank"
+
+#Additional student info
+desiredJob: "Data Scientist or Consulting"
+program: "MS Business Analytics"

@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Meara Kinne"
+email: "kinnem@rpi.edu"
+description: "I have many interests and like to talk to new people!"
+hobbies: "Gaming, digital art, cooking, writing" 
+picture: "/img/Meara_Kinne.jpg" 
+github_username:  "juneofthemearkat"
+twitter_username: ""
+linkedin_username: "Meara Kinne"
+website: ""
+
+#Additional student info
+desiredJob: "I want to have a job in marketing or research analysis for a game company."
+program: "MS Analytics"

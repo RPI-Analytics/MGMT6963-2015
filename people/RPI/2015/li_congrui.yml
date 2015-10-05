@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Congrui Li"
+email: "lic10@rpi.edu"
+description: "Live long and prosper. May the force be with you."
+hobbies: "Tennis, movies, basketball, science fiction, watching football." 
+picture: "/img/congruili.jpg" 
+github_username:  "lic10"
+twitter_username: ""
+linkedin_username: ""
+website: "tw.rpi.edu/web/person/CongruiLi"
+
+#Additional student info
+desiredJob: "data scientist"
+program: "Computer Science"

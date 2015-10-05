@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Abinash Koirala"
+email: "koirala.abinash@gmail.com"
+description: "MSIT grad student, full-stack web developer."
+hobbies: "Trekking, running, walking, etc so basically moving :)" 
+picture: "/img/koirala_abinash.jpg" 
+github_username:  "koiralaa"
+twitter_username: ""
+linkedin_username: "www.linkedin.com/in/abinash"
+website: ""
+
+#Additional student info
+desiredJob: "Data Analytics, Business Analytics"
+program: "MS in Information Technology"

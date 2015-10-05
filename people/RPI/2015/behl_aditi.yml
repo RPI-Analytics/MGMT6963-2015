@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "Aditi Behl"
+email: "behla@rpi.edu"
+description: "Simple, Easy Going, Creative"
+hobbies: "travelling, singing, cooking" 
+picture: "/img/Aditi.jpg" 
+github_username:  "aditibehl27"
+twitter_username: ""
+linkedin_username: "https://www.linkedin.com/pub/aditi-behl/a3/b14/336"
+website: ""
+
+#Additional student info
+desiredJob: "Data Scientist"
+program: "MS Business Analytics"
