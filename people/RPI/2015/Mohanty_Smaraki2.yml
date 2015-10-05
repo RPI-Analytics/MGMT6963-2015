@@ -1,0 +1,19 @@
+course: "MGMT6963"
+year: "2015"
+semester: "Fall"
+
+# Role should either be Instructor or Student or TA
+role: "Student" 
+name: "First Last"
+email: "mohans3@rpi.edu"
+description: "I am MS MGMt student"
+hobbies: "Love dancing" 
+picture: "" 
+github_username:  "Smaraki11"
+twitter_username: "Smaraki11"
+linkedin_username: "https://www.linkedin.com/pub/smaraki-mohanty/49/55/1a8"
+website: " "
+
+#Additional student info
+desiredJob: "Business Analyst"
+program: "MS Management"
