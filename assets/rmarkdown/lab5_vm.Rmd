@@ -48,6 +48,7 @@ malesarray<-which(titanic$sex=='male')
 malesarray
 femalesarray<-which(titanic$sex=='female')
 males2<-titanic[ malesarray, ] 
+females2<-titanic[ -malesarray, ] 
 females2<-titanic[ femalesarray, ] 
 
 #Males/Females Array via a boolean vector indicating appropriate rows.
@@ -193,30 +194,32 @@ c('Complete:', nrow(df.complete), 'Missing:', nrow(df.missing))
 #Now we can fix the missing value by doing a very simple model of taking the mean of each column and then substituting.
 
 ```{r}
-# Taking the mean of column 1 of the dataframe doesn't work because of NA's
-mean(df[,1]) 
+# Taking the mean of column 3 of the dataframe doesn't work because of NA's
+mean(df[,3]) 
 
-# Returns the mean of column 1 of the dataframe
-df.c1=mean(df[,1], na.rm=TRUE)
+# Returns the mean of column 3 of the dataframe
+df.c1=mean(df[,3], na.rm=TRUE)
 
 #Or we can specify the complete dataframe. 
-df.c1=mean(df.complete[,1]) # returns the mean of column 1 of the dataframe
+df.c1=mean(df.complete[,3]) # returns the mean of column 3 of the dataframe
 
 #This will substitute the mean for all missing values. 
 df$c[is.na(df$c)] <- df.c1
 
 #We could do the whole step in one step.
 df$d[is.na(df$d)] <- mean(df$d, na.rm=TRUE)
+df$a[is.na(df$a)] <- mean(df$a, na.rm=TRUE)
 
 
 
 ```
 
-1R. Go ahead and provide the code to fix column a and print out your final dataframe with everything fixed.
+1R. Go ahead and provide the code to fix column a [from the df dataframe just above this] and print out your final dataframe with all missing values (NAs) removed.
 
-2R. How many missing values are there for the age field? 
+2R. Now let's start with the titanic dataset.  How many missing values are there for the age field? 
+ 
 
-3R. Fill in the age value with the median. 
+3R. Continuing with the Titanic dataset, fill in the age value with the median. 
 
 4R. Count the number of NA values in the titanic$embarked and titanic$fare. Then look at the data.  What is going on?  Recode the data so that missing values are coded as NA. 
 
@@ -224,9 +227,9 @@ df$d[is.na(df$d)] <- mean(df$d, na.rm=TRUE)
 
 
 
-Whle we haven't looked at any "models" yet, here you can see a simple regression analysis used to predict age from the fare, sex, sibsp fields with regression analysis. This creates a simple function were age=f(fare,sex,sibsp)
+Whle we haven't looked at any "models" yet, here you can see a simple regression analysis used to predict age from the fare, sex, sibnsp fields with regression analysis. This creates a simple function were age=f(fare,sex,sibsp)
 ```{r}
-
+names(titanic)
 titanic.complete<-titanic[complete.cases(titanic),]
 titanic.missing<-titanic[!complete.cases(titanic),]
 
@@ -257,6 +260,8 @@ Let's start with the process of *recoding a continuous variable into a categoric
 #This is the simple child coding into a variable which is 0 or 1. 
 titanic$child <- 0
 titanic$child[titanic$age < 18] <- 1
+titanic$adult <- 0
+titanic$adult[titanic$age >= 18] <- 1
 
 #This recodes to a character vector
 titanic$childcat <- ifelse(titanic$age > 18, c("adult"), c("child")) 
@@ -283,7 +288,7 @@ titanic$section <-gsub(" ", "", titanic$section)
 
 #This returns an integer with the number of cabins associated with a name. 
 titanic$cabins<-nchar(titanic$section)
-
+titanic$cabins[titanic$cabins==0]<-1
 #This creates a new variable using only the first cabin.
 titanic$section2 <-substr(titanic$section, 1, 1)
 
@@ -317,6 +322,8 @@ titanic$title <- as.factor(titanic$title)
 
 #As Mentioned though, we like to not do for loops if possible. 
 titanic$title2 <- "None"
+grepresult<-grepl('Mr.', titanic$name)
+
 titanic$title2[grepl('Mr.', titanic$name)]<-"Mr."
 titanic$title2[grepl('Miss.', titanic$name)]<-"Miss."
 titanic$title2[grepl('Mrs.', titanic$name)]<-"Mrs."
