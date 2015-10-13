@@ -28,4 +28,8 @@ Advanced R by Hadley Wickham [webpage] (http://adv-r.had.co.nz)
 
 [Hands on Python](http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/index.html)
 
+## MOOCs
 
+[EDX Python Courses](https://www.edx.org/course?search_query=python)
+
+[Berkley Introduction to Spark Course](https://courses.edx.org/courses/BerkeleyX/CS100.1x/1T2015/info)
