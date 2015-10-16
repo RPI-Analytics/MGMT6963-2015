@@ -1,0 +1,283 @@
+---
+title: "Technology Fundamentals for Business Analytics"
+output:  html_document
+---
+
+## Overview 
+
+We will provide here a number of different processes for *subsetting*, *linking*, and *aggregation* of data. There are a number of different reasons why you might want to do each of these processes.  
+
+### Subsetting - Selecting Columns
+We have already seen some level of selection in the "slicing" of vectors and matrix by location. This is an extremely important way  
+
+```{r}
+#Let's start by creating some data.
+#This creates a vector with 10 numbers
+v=(1:10)
+v
+#This creates a matrix 4,
+m<- matrix(rnorm(40, mean=20, sd=5), nrow=10, ncol=4)
+colnames(m)<-(c("a","b","c","d"))
+
+#This creates a dataframe
+df<- as.data.frame(m)
+
+#We could also put together 
+df2<- data.frame(v, m)
+
+
+#Select Specific Columns
+df[,1:2] #All rows, column 1-2
+df[1:2]  #All rows, column 1-2
+df[,c(1,3)] #We can also make the selection a vector.  This dynamically creates a vector.
+columns.v<-c(1,3)
+df[,columns.v] #We can also make the selection a vector.  This dynamically creates a vector.
+df[,c("a","c")] #We can also do it by column name.
+columns.b <- names(df) %in% c("a", "b", "c")
+df[,columns.b]
+
+#We can also drop specific columns
+df[,c(-1,-4)] #drop column a and d
+df[!columns.b]  #drop all but d
+
+#There is also a specific subset function
+subset(df, select=c(a, b) )
+
+```
+
+###Selecting Rows
+At times we may want to split our sample for analysis.  We may just want to do it in order or we may want the process to be more random. 
+ 
+
+```{r}
+df[1:5,]  #The first 5 rows and all columns.
+df[c(1,3,8),]  #Just a selection of a few rows
+rows<-c(1,3,8)
+df[rows,]
+```
+```{r}
+#For a random sample, let's first create a random vector of the row numbers.
+n<-nrow(df)
+sample <- sample(10, 10, replace=F)
+sample
+```
+
+```{r}
+#notice how the array is being used to sample out the rows. 
+df[sample[1:5],]
+df[sample[6:10],]
+
+
+#Remember we can select out the a variable of a dataframe using df$a
+df[ which(df$a>=20.0), ] 
+df[ which(df$a>=20 & df$b>=18.0), ]  # & is the and sign
+df[ which(df$a>=20 | df$b>=18.0), ]  # | is the or sign
+
+#We can also use the subset function to select out columes
+subset(df, a >= 20 )
+subset(df, a >= 20 & df$b>=18.0 )
+subset(df, a >= 20 & df$b>=18.0 )
+
+#We can also combine column and row selection as follows
+subset(df, a >= 20 & df$b>=18.0, select=c(a, b) )
+```
+
+```{r}
+# Get the data
+#install.packages("RCurl")
+library(RCurl)  #install RCurl if this errors. 
+file <- getURL("https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv")
+titantic <- read.csv(text = file)
+
+# View the data
+names(titantic) #show the names
+head(titantic, 2) #show the first 2 records
+summary(titantic) #summarize all variables
+str(titantic) #shows the structure of an R Object
+
+```
+
+
+
+## Exercises
+These toy examples are fine, but for this exercise we will use the Titaantic dataset. We want to split this out in a few different ways.  
+
+1R. Subset only the *survived*, *sex*, and *age* columns and create a new dataframe with the results.
+
+```{r}
+#Lets get the structure of the columns.
+names(titantic)
+#We can see that survived=1, sex=4, and age =5
+tnew1<-titantic[,c(1,4,5)] 
+tnew2<-titantic[,c('survived', 'sex', 'age')] 
+tnew3<-subset(titantic, select=c('survived', 'sex', 'age') )
+```
+
+2R. Drop the *ticket* and the cabin and create a new dataframe with the results.
+
+```{r}
+#Let's get the structure of the columns.
+
+#We can see that ticket=8, sex=4, and cabin =10
+tnew4<-titantic[,c(-8,-10)] 
+
+```
+
+
+3R. Split the dataset into a *train* dataframe having the first 80% of the records and a *test* dataframe having the last 20%. 
+
+```{r}
+#Let's get the structure of the columns.
+n<-nrow(titantic)
+rows<-round(.8*n,0)
+#We can see that ticket=8, sex=4, and cabin =10
+tnew6<-titantic[1:rows,] 
+tnew7<-titantic[(rows+1):n,] 
+
+```
+
+
+4R. Randomely sample the dataset so that there are 2 samples.
+
+```{r}
+#Let's get the structure of the columns.
+n<-nrow(titantic)
+r <- sample(1:n, n, replace=F)
+halfn<-round(n/2,0)
+
+select1<-r[1:halfn]
+select2<-r[(halfn+1):n]
+
+tnew8<-titantic[select1,] 
+tnew9<-titantic[select2,] 
+#or
+tnew10<-titantic[r[1:halfn],] 
+tnew11<-titantic[r[(halfn+1):n],] 
+
+```
+
+5R. Create one dataframe with all of the *males* and a second with all of the *females*. 
+
+```{r}
+#Let's get the structure of the columns.
+males<-subset(titantic, sex=='male' )
+females<-subset(titantic, sex=='female' )
+
+#Males/Females Array via a vector listing the desired rows
+malesarray<-which(titantic$sex=='male')
+femalesarray<-which(titantic$sex=='female')
+males2<-titantic[ femalesarray, ] 
+females2<-titantic[ femalesarray, ] 
+
+#Males/Females Array via a boolean vector indicating appropriate rows.
+malesarray2<-ifelse(titantic$sex=='male' , TRUE , FALSE)
+males3<-titantic[ malesarray2, ] 
+females3<-titantic[ !malesarray2, ] 
+
+
+```
+
+
+
+
+
+
+### Merging data
+Merging datasets from different sources can be very common for a data scientist.  You might need to 
+
+
+```{r}
+key=(1:10)
+ 
+#This creates a matrix 4,
+#Here we are passing the row names and column names as a list. 
+m<- matrix(rnorm(40, mean=20, sd=5), nrow=10, ncol=4, dimnames=list((1:10),c("a","b","c","d")))
+m2<- matrix(rnorm(40, mean=1000, sd=5), nrow=10, ncol=4, dimnames=list((1:10),c("e","f","g","h")))
+m3<- matrix(rnorm(40, mean=1000, sd=5), nrow=10, ncol=4, dimnames=list((1:10),c("e","f","g","h")))
+
+#This creates a dataframe where the same key is across both
+df<-  data.frame(key,m)
+df2<- data.frame(key,m2)
+key=(11:20)
+df3<- data.frame(key,m3)
+
+
+#slight alterhate syntax, using column bind first.
+df4<-data.frame(cbind(key,m3))
+
+#First let's merge rows for the same columns by combining df3 with rbind.  Key is that these have to have the same columns
+rbind(df2,df3)
+
+#let's say we have a dataframe that doesn't have the "e" column
+df5<-df3[,-2] #Drop the e column
+```
+By then entering the `rbind(df2,df5)` command we will get the error: 
+`Error in rbind(deparse.level, ...) : 
+  numbers of columns of arguments do not match`
+
+So instead we have to go ahead and readd the column as NA.
+
+```{r}
+df5$e=NA
+df5
+#Notice that it doesn't matter that columns are not in the same order.
+rbind(df2,df5)
+```
+
+That merged some rows with the same structure.  But let's say we have to merge columns.  For that we need a common key.
+
+```{r}
+df6 <- merge(df,df2,by="key")
+df6
+
+#If we try to merge by a key were there is no match, it will result in 0 rows.
+df7 <- merge(df,df3,by="key")
+df7
+```
+
+But we can override this.  Let's say we want to include data from one or more dataframe even where there is no match.  This type of situation is called an *outer join* when working with SQL.
+
+```{r}
+df8 <- merge(df,df3,by="key",all.x=TRUE)   #x is df4 It will add NA for other (like left outer join)
+df9 <- merge(df,df3,by="key", all.y=TRUE)  #y is df3 (like right outer join)
+df10 <- merge(df,df3,by="key",all.x=TRUE, all.y=TRUE)  #y is df3 (like full outer join)
+```
+6R. You will find another dataset on github that contains additional rows of individuals [here](https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/gh-pages/assets/data/titantic_morerows.csv). (In reality they are duplicates but let's say we didn't know that). Provide the code to first import thist dataset and then combine it with the origional titantic dataframe into a new one called titantic_<yourlastname>. 
+
+7R. You will find another dataset with additional variables that may help in the analysis [here](https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/gh-pages/assets/data/titantic_morecolumns.csv). Note. This is a little bit more tricky, as there currently isn't a key in the origional dataset. As a result, do the following substeps: (a). Provide code to verify the number of records in the origional and new dataset. (b). Generate a key for the origional dataset in the pattern of the new dataset. (c). Provide code to merge the two datasets titantic_cats_<yourlastname>.
+
+
+
+
+### Aggregage Data  
+Finally, we are going to aggregate data.  
+
+```{r}
+
+#This looks across all men and wormen on the titantic to average who survived.
+aggregate(titantic$survived, by=list(titantic$sex), FUN=mean, na.rm=FALSE)
+
+#You can further recode a variable based on whether the 
+titantic$child <- ifelse(titantic$age > 18, c("adult"), c("child")) 
+aggregate(titantic$survived, by=list(titantic$sex, titantic$child), FUN=mean, na.rm=FALSE)
+
+#This is a different recoding scheme where we are changing the value for the selected rows were the condition is met
+titantic$child[titantic$age > 18] <- "adult"
+titantic$child[(titantic$age > 2 & titantic$age <= 18)] <- "child"
+titantic$child[titantic$age <= 2] <- "infant"
+aggregate(titantic$survived, by=list(titantic$sex, titantic$child), FUN=mean, na.rm=FALSE)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
