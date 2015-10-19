@@ -11,7 +11,7 @@ Public solutions/tutorials to Kaggle problems can be tremendous opportunities to
 The goal of the first assignment is to understand data from an analytics problem as well as so that you see the overall process in action.  Overall, you should assess 2 different datasets and 3 total solutions.  
 
 ### Solutions 1-2: Titantic Dataset
-Solutions 1-2 should be for the [Titanic](https://www.kaggle.com/c/titanic), and you should be able to get a prediction for each. One should be Python and one R.  You should compare differences in the solutions (in terms of performance) so both solutions must work.   
+Solutions 1-2 should be for the [Titanic](https://www.kaggle.com/c/titanic), and you should be able to get a prediction for each. **One should be Python and one R and it should not be the simple naive/gender solutions we did in class**  You should compare differences in the solutions (in terms of performance) so both solutions must work.   
 
 (1) Overview of Titanic Analytics Problem and Data.  You could provide descriptions of key fields.
 
@@ -23,7 +23,7 @@ Solutions 1-2 should be for the [Titanic](https://www.kaggle.com/c/titanic), and
 
 (4) Overview of Analytics Problem and Data (1 page).
 
-(5) Provide overview of solution/approach (as above).
+(5) Provide overview of solution/approach (as above this should include line by line comments on the code).
 
 (6) Prepare 3 minute presentation on dataset and solution. 1 slide problem. 1 slide data. 1 slide solution. 
 
