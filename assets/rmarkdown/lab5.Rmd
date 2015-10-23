@@ -1,0 +1,96 @@
+---
+title: "Lab 5"
+output: html_document
+---
+
+#Getting External Data Into Rstudio Server...extension. 
+
+
+####OPTION 1
+If sharing is working between the guest virual machine and the host, the easiest way is to sync your Git repository and then load the data from the shared drive. Look at the repository directory.
+```{r}
+setwd('/vagrant/data')
+list.files()
+titantic <- read.csv('titantic_train.csv', header = TRUE )
+```
+###OPTION 2
+You can import a dataframe from github directly using the gui with import dataset->from web url.  
+[https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv](https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv)
+Note. During the import process on the top left you can specify the dataframe name.  By default it will come through as titantic_train. You can create a new one called titantic using the code below.
+`titantic<-titantic_train`
+
+
+###OPTION 3
+#R doesen't seem to have a real robust method of dealing with files and https, which I have seen cause some problems. 
+Instead, you can `vagrant ssh` into the `/home/vagrant` directory of the virtual machine this is default. Then enter `wget https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/master/data/titantic_train.csv` from the terminal. This will download the file directly to the linux virtual machine. 
+```{r}
+setwd('/home/vagrant')
+list.files()
+titantic <- read.csv('titantic_train.csv', header = TRUE )
+```
+
+
+Review, three ways to subset rows. 
+
+```{r}
+# This is a function that 
+males<-subset(titantic, sex=='male' )
+females<-subset(titantic, sex=='female' )
+
+#Males/Females Array via a vector listing the desired rows in an array.  
+malesarray<-which(titantic$sex=='male')
+femalesarray<-which(titantic$sex=='female')
+males2<-titantic[ malessarray, ] 
+females2<-titantic[ femalesarray, ] 
+
+#Males/Females Array via a boolean vector indicating appropriate rows.
+malesarray2<-ifelse(titantic$sex=='male' , TRUE , FALSE)
+males3<-titantic[ malesarray2, ] 
+females3<-titantic[ !malesarray2, ] 
+```
+
+
+#Missing Values
+
+First let's generate our our sample data that inclues a few missing values. 
+
+```{r}
+m<- matrix(rnorm(40, mean=20, sd=5), nrow=10, ncol=4)
+colnames(m)<-(c("a","b","c","d"))
+df<- as.data.frame(m)
+df[c(1,2,8),c(1,3,4)]=NA
+
+df
+```
+First we want to be able to diagnose missing values in our dataset.  
+
+```{r}
+
+describe(df)
+
+#The complete.cases function provides a boolean vector with a True if the row has no missing variables and False if the row has missing variables.  
+complete.cases(df)
+df.complete<-df[complete.cases(df),]
+df.missing<-df[!complete.cases(df),]
+
+#Alternate syntax to remove NA via a function.
+df.complete2 <- na.omit(df)
+
+#Let's find total. 
+c('Complete:', nrow(df.complete), 'Missing:', nrow(df.missing))
+
+
+
+```
+Now we can fix the missing value by doing a very simple model of taking the mean of each column and then adding it back. 
+
+```{r}
+mean(df[,1]) # Taking the mean of column 1 of the dataframe
+df.c1=mean(df[,1], na.rm=TRUE) # returns the mean of column 1 of the dataframe
+
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+

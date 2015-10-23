@@ -1,0 +1,49 @@
+---
+title: "lab5 Solution"
+output: html_document
+---
+
+1R. Go ahead and provide the code to fix column a and print out your final dataframe with everything fixed.
+
+2R. How many missing values are there for the age field? 
+
+3R. Fill in the age value with the median. 
+
+4R. Count the number of NA values in the titanic$embarked and titanic$fare. Then look at the data.  What is going on?  Recode the data so that missing values are coded as NA. 
+
+5R. Determine what is the most common value for titanic$embarked. Recode NA's to the most common value. 
+
+#Solution
+```{r}
+#1R. 
+df$d[is.na(df$a)] <- mean(df$a, na.rm=TRUE)
+
+#2R 
+sum(is.na(titanic$embark))
+
+#3R
+
+titanic$age[is.na(titanic$age)] <- median(titanic$age, na.rm=TRUE)
+
+#4R
+titanic$fare[titanic$fare==""] <- NA
+titanic$embarked[titanic$embarked==""] <- NA
+
+summary(titanic$embarked)
+titanic$embarked[is.na(titanic$embarked)] <- "S"
+summary(titanic$embarked)
+
+
+# Look at class and fare patterns
+train$Fare2 <- '30+'
+train$Fare2[train$Fare < 30 & train$Fare >= 20] <- '20-30'
+train$Fare2[train$Fare < 20 & train$Fare >= 10] <- '10-20'
+train$Fare2[train$Fare < 10] <- '<10'
+aggregate(Survived ~ Fare2 + Pclass + Sex, data=train, FUN=function(x) {sum(x)/length(x)})
+
+
+ if(grepl('Master.', titanic$name[i])){titanic$title[i] <- 'Master'}
+  if(grepl('Dr.', titanic$name[i])){titanic$title[i] <- 'Doctor'}
+  if(grepl('Major.', titanic$name[i])){titanic$title[i] <- 'Major'}
+
+```

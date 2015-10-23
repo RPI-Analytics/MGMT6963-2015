@@ -1,0 +1,21 @@
+```{r}
+# The train and test data is stored in the ../input directory on Kaggle Scripts
+#Kaggle Settings
+train <- read.csv("../input/train.csv", stringsAsFactors=FALSE)
+test  <- read.csv("../input/test.csv",  stringsAsFactors=FALSE)
+
+#VM Settings
+#train <- read.csv("/vagrant/data/titanic/train.csv")
+#test  <- read.csv("/vagrant/data/titanic/test.csv")
+
+test$Survived=0
+submission<-test[,c('PassengerId','Survived')]
+
+#Kaggle Scripts
+#write.table(submission, "submission.csv", sep=",", row.names=FALSE)
+#VM
+write.table(submission, "/vagrant/data/titanic/submission_naive.csv", sep=",", row.names=FALSE)
+
+```
+
+
