@@ -8,6 +8,11 @@ coverage
 .ruby-gemset
 .sass-cache
 .idea/
+<<<<<<< HEAD
 .vagrant/
 tmp/
 
+=======
+tmp/
+.vagrant/
+>>>>>>> master
