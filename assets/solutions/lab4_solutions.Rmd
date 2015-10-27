@@ -243,10 +243,18 @@ df9 <- merge(df,df3,by="key", all.y=TRUE)  #y is df3 (like right outer join)
 df10 <- merge(df,df3,by="key",all.x=TRUE, all.y=TRUE)  #y is df3 (like full outer join)
 ```
 6R. You will find another dataset on github that contains additional rows of individuals [here](https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/gh-pages/assets/data/titantic_morerows.csv). (In reality they are duplicates but let's say we didn't know that). Provide the code to first import thist dataset and then combine it with the origional titantic dataframe into a new one called titantic_<yourlastname>. 
+```{r}
+titanic <- rbind(titanic,titantic_morerows)
+```
+
+
+
 
 7R. You will find another dataset with additional variables that may help in the analysis [here](https://raw.githubusercontent.com/RPI-Analytics/MGMT6963-2015/gh-pages/assets/data/titantic_morecolumns.csv). Note. This is a little bit more tricky, as there currently isn't a key in the origional dataset. As a result, do the following substeps: (a). Provide code to verify the number of records in the origional and new dataset. (b). Generate a key for the origional dataset in the pattern of the new dataset. (c). Provide code to merge the two datasets titantic_cats_<yourlastname>.
-
-
+```{r}
+#This Works. 
+all_kuruzovich <- merge(titanic,titantic_morecolumns,by="Name",all.x=TRUE, all.y=TRUE)  #y is df3 (like full outer join)
+```
 
 
 ### Aggregage Data  
