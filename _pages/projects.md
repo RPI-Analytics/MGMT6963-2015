@@ -29,14 +29,18 @@ Solutions 1-2 should be for the [Titanic](https://www.kaggle.com/c/titanic), and
 
 
 ## Kaggle Assignment 2 (Due on 11/30)
-For the second Kaggle assignment we are all going to enter the TBD contest.   
+For the second Kaggle assignment we are all going to enter the [What's Cooking](https://www.kaggle.com/scripts?competition=whats-cooking) contest.   This contest provides an overview of a variety of item. 
 
 For this assignment, I'd like you to provide the following:
 
 (1) Introduction and overview of the data.
 
-(2) A series of blog style entries including your code, the things you tried, and the resulting outcomes.  
+(2) A series of blog style entries including your code and the different ways that you have processed the data to developed features or identified different models.  You can base your model on an existing dataset but you should be working here on your own to enhance and improve using new methods.  
 
-(3) Print out your resulting score and rank from 3 different entries to the competition. 
+(3) You should attempt to develop a table that clearly represents the results and describes what was tried for each.   
+
+## Kaggle Assignment 2  Advanced Option (Due on 11/30)
+
+
 
  
