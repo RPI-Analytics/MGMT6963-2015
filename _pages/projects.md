@@ -35,9 +35,9 @@ For this assignment, I'd like you to provide the following:
 
 (1) Introduction and overview of the data.
 
-(2) A series of blog style entries including your code and the different ways that you have processed the data to developed features or identified different models.  You can base your model on an existing dataset but you should be working here on your own to enhance and improve using new methods.  
+(2) A series of blog style entries including your code and the different ways that you have processed the data to developed features or identified different models.  You can base your model on an existing dataset but you should be working here on your own to enhance and improve using new methods.  As part of the assignment, you should have 3 entries into Kaggle (as a minimum).  You should include evidence of this and indicate the performance of each model.  
 
-(3) You should attempt to develop a table that clearly represents the results and describes what was tried for each.   
+(3) You should attempt to develop a table that clearly represents the results from the 3 submissions and summarizes what was tried for each model.   
 
 ## Kaggle Assignment 2  Advanced Option (Due on 11/30)
 
