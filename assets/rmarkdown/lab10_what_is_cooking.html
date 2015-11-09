@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="author" content="Andrew Man Hay Chiu" />
+
+
+<title>What’s Cooking?</title>
+
+<script src="output_files/jquery-1.11.0/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="output_files/bootstrap-3.3.1/css/bootstrap.min.css" rel="stylesheet" />
+<script src="output_files/bootstrap-3.3.1/js/bootstrap.min.js"></script>
+<script src="output_files/bootstrap-3.3.1/shim/html5shiv.min.js"></script>
+<script src="output_files/bootstrap-3.3.1/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="output_files/highlight/default.css"
+      type="text/css" />
+<script src="output_files/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img { 
+  max-width:100%; 
+  height: auto; 
+}
+</style>
+<div class="container-fluid main-container">
+
+
+<div id="header">
+<h1 class="title">What’s Cooking?</h1>
+<h4 class="author"><em>Andrew Man Hay Chiu</em></h4>
+</div>
+
+
+<pre><code>## Loading required package: methods
+## 
+## Attaching package: &#39;jsonlite&#39;
+## 
+## The following object is masked from &#39;package:utils&#39;:
+## 
+##     View
+## 
+## 
+## Attaching package: &#39;dplyr&#39;
+## 
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union
+## 
+## Loading required package: NLP
+## 
+## Attaching package: &#39;NLP&#39;
+## 
+## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     annotate
+## 
+## Loading required package: lattice</code></pre>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>When I tried to learn the bag of words technique using Kaggle’s “Bag of Words Meets Bag of Popcorn” knowledge competition, the only tutorial available was for Python. I hope this helps with some Kagglers who prefer to use R/RStudio as their data analytics program.</p>
+<p>Some of the script is based on this rpubs <a href="https://rstudio-pubs-static.s3.amazonaws.com/92510_018db285fda546fcb89b53dd2847b5d4.html#video-5-building-models-r-script-reproduced-here">file</a></p>
+</div>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>Let’s have a look at the train data. It seems like there are lots of Italian recipes. No wonder why the benchmark was set as predicting all test recipes as “Italian”!</p>
+<p><img src="output_files/figure-html/unnamed-chunk-1-1.png" title="" alt="" width="672" /></p>
+<div id="create-corpus" class="section level3">
+<h3>Create Corpus</h3>
+<p>In R, using the <strong>tm</strong> package, a <em>Corpus</em> is created from the lists of ingredients within the training data. It is essentially a form of storing the list of words in a format for NLP. The output shows that there are 39744 “documents”, or in this case recipes, in the corpus.</p>
+<pre class="r"><code>ingredients &lt;- Corpus(VectorSource(train$ingredients))
+ingredients</code></pre>
+<pre><code>## &lt;&lt;VCorpus&gt;&gt;
+## Metadata:  corpus specific: 0, document level (indexed): 0
+## Content:  documents: 39774</code></pre>
+<div id="preprocessing" class="section level4">
+<h4>Preprocessing</h4>
+<p>The corpus basically has the words/ingredients as they were imported. Now there are words that are very similar, but may not be identical within the corpus. For example, there are plurals of words which count as a separate word (e.g.: <em>thigh</em> and <em>thighs</em>).</p>
+<p>These should be reduced by preprocessing the data. One preprocessing technique shown below is to “stem” the words. This usually gets words spelt slightly differently into the same “stem” word.</p>
+<pre><code>## &lt;&lt;VCorpus&gt;&gt;
+## Metadata:  corpus specific: 0, document level (indexed): 0
+## Content:  documents: 39774</code></pre>
+<p><em>Note: Other preprocessing procedures in the tm package include: tolower, removePunctuation, removeWords, stopwords</em></p>
+</div>
+</div>
+<div id="create-document-term-matrix-bag-of-ingredients" class="section level3">
+<h3>Create Document Term Matrix (Bag of Ingredients)</h3>
+<p>After preprocessing, a <em>Document Term Matrix</em> is created. The Term-Document Matrix is a matrix of words (or in this case, ingredients) in all of the recipes, and whether the ingredient appears in each recipe.</p>
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 39774, terms: 2771)&gt;&gt;
+## Non-/sparse entries: 741895/109471859
+## Sparsity           : 99%
+## Maximal term length: 19
+## Weighting          : term frequency (tf)</code></pre>
+</div>
+<div id="feature-selection" class="section level3">
+<h3>Feature selection</h3>
+<p>The Term-Document Matrix contains a lot of columns (ingredients). Reducing the number of features, by removing ingredients that don’t occur often, may help with the model (although sometimes unique ingredients may be key to predict certain cuisines).</p>
+<pre class="r"><code>sparse &lt;- removeSparseTerms(ingredientsDTM, 0.99)
+## This function takes a second parameters, the sparsity threshold.
+## The sparsity threshold works as follows.
+## If we say 0.98, this means to only keep terms that appear in 2% or more of the recipes.
+## If we say 0.99, that means to only keep terms that appear in 1% or more of the recipes.
+sparse</code></pre>
+<pre><code>## &lt;&lt;DocumentTermMatrix (documents: 39774, terms: 249)&gt;&gt;
+## Non-/sparse entries: 646139/9257587
+## Sparsity           : 93%
+## Maximal term length: 13
+## Weighting          : term frequency (tf)</code></pre>
+<p>By selecting only ingredients that appear in at least 1% of the recipes, the number of ingredients in the Document Term Matrix was reduced from 2771 to 249, i.e.: only 8.99% of the full set of ingredients. The DTM is then converted to a data.frame for modelling.</p>
+<pre class="r"><code>ingredientsDTM &lt;- as.data.frame(as.matrix(sparse))
+## Add the dependent variable to the data.frame
+ingredientsDTM$cuisine &lt;- as.factor(train$cuisine)</code></pre>
+</div>
+</div>
+<div id="create-model" class="section level2">
+<h2>Create Model</h2>
+<p>To estimate the error of the model, the “train” dataset/bag of ingredients is separated into a training and validation set. This can be done using the <em>caret</em> package.</p>
+<pre class="r"><code>inTrain &lt;- createDataPartition(y = ingredientsDTM$cuisine, p = 0.6, list = FALSE)
+training &lt;- ingredientsDTM[inTrain,]
+testing &lt;- ingredientsDTM[-inTrain,]</code></pre>
+<div id="cart" class="section level3">
+<h3>CART</h3>
+<p>A basic model to create from the bag of ingredients is the CART model. This creates a decision tree based on some of the more important ingredients. The tree below shows the decision tree created from the training data.</p>
+<pre class="r"><code>set.seed(9347)
+cartModelFit &lt;- rpart(cuisine ~ ., data = training, method = &quot;class&quot;)
+## Plot the tree
+prp(cartModelFit)</code></pre>
+<p><img src="output_files/figure-html/build_model-1.png" title="" alt="" width="672" /></p>
+<p>We can then evaluate the model’s accuracy using a confusion matrix. The accuracy of this model seems very poor at only 42.87%. This was close the result on the actual test set when submitted to Kaggle. Having a look at the prediction matrix shows where some of the problems are. Predictions were almost exclusively Chinese, Indian, Italian, Mexican, Southern US and Thai. Therefore, it might be useful to explore the ingredients unique to the other cuisines.</p>
+<p>With the highest score currently at over twice the accuracy, this simple bag of ingredients example is not very good. However, I hope this script can help some people!</p>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##               Reference
+## Prediction     brazilian british cajun_creole chinese filipino french
+##   brazilian            0       0            0       0        0      0
+##   british              0       0            0       0        0      0
+##   cajun_creole         0       0            0       0        0      0
+##   chinese              1       1            6     800      106      3
+##   filipino             0       0            0       0        0      0
+##   french               0       0            0       0        0      0
+##   greek                0       0            0       0        0      0
+##   indian               4       0            1       1        0      1
+##   irish                0       0            0       0        0      0
+##   italian             58      27          159      16       14    347
+##   jamaican             0       0            0       0        0      0
+##   japanese             0       0            0       0        0      0
+##   korean               0       0            0       0        0      0
+##   mexican             22       3           29      27        4      6
+##   moroccan             0       0            0       0        0      0
+##   russian              0       0            0       0        0      0
+##   southern_us         98     286          418     211      146    699
+##   spanish              0       0            0       0        0      0
+##   thai                 3       4            5      14       32      2
+##   vietnamese           0       0            0       0        0      0
+##               Reference
+## Prediction     greek indian irish italian jamaican japanese korean mexican
+##   brazilian        0      0     0       0        0        0      0       0
+##   british          0      0     0       0        0        0      0       0
+##   cajun_creole     0      0     0       0        0        0      0       0
+##   chinese          2     13     4       7       33      299    210      15
+##   filipino         0      0     0       0        0        0      0       0
+##   french           0      0     0       0        0        0      0       0
+##   greek            0      0     0       0        0        0      0       0
+##   indian           2    342     1       0        4        6      0       0
+##   irish            0      0     0       0        0        0      0       0
+##   italian        291     68    22    2211       30       15      8     237
+##   jamaican         0      0     0       0        0        0      0       0
+##   japanese         0      0     0       0        0        0      0       0
+##   korean           0      0     0       0        0        0      0       0
+##   mexican         23    382     2      22       11       24      3    1743
+##   moroccan         0      0     0       0        0        0      0       0
+##   russian          0      0     0       0        0        0      0       0
+##   southern_us    152    388   237     895      129      220     95     577
+##   spanish          0      0     0       0        0        0      0       0
+##   thai             0      8     0       0        3        5     16       3
+##   vietnamese       0      0     0       0        0        0      0       0
+##               Reference
+## Prediction     moroccan russian southern_us spanish thai vietnamese
+##   brazilian           0       0           0       0    0          0
+##   british             0       0           0       0    0          0
+##   cajun_creole        0       0           0       0    0          0
+##   chinese             2       1          13       0  187         85
+##   filipino            0       0           0       0    0          0
+##   french              0       0           0       0    0          0
+##   greek               0       0           0       0    0          0
+##   indian             68       0           2       1   14          0
+##   irish               0       0           0       0    0          0
+##   italian            87      26         211     240   27         10
+##   jamaican            0       0           0       0    0          0
+##   japanese            0       0           0       0    0          0
+##   korean              0       0           0       0    0          0
+##   mexican           124       5          37      37   69         29
+##   moroccan            0       0           0       0    0          0
+##   russian             0       0           0       0    0          0
+##   southern_us        47     163        1461     117   95         62
+##   spanish             0       0           0       0    0          0
+##   thai                0       0           4       0  223        144
+##   vietnamese          0       0           0       0    0          0
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.4263          
+##                  95% CI : (0.4186, 0.4341)
+##     No Information Rate : 0.1971          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.3387          
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: brazilian Class: british Class: cajun_creole
+## Sensitivity                    0.0000        0.00000             0.00000
+## Specificity                    1.0000        1.00000             1.00000
+## Pos Pred Value                    NaN            NaN                 NaN
+## Neg Pred Value                 0.9883        0.97982             0.96114
+## Prevalence                     0.0117        0.02018             0.03886
+## Detection Rate                 0.0000        0.00000             0.00000
+## Detection Prevalence           0.0000        0.00000             0.00000
+## Balanced Accuracy              0.5000        0.50000             0.50000
+##                      Class: chinese Class: filipino Class: french
+## Sensitivity                 0.74836         0.00000       0.00000
+## Specificity                 0.93340         1.00000       1.00000
+## Pos Pred Value              0.44743             NaN           NaN
+## Neg Pred Value              0.98094         0.98101       0.93347
+## Prevalence                  0.06722         0.01899       0.06653
+## Detection Rate              0.05030         0.00000       0.00000
+## Detection Prevalence        0.11243         0.00000       0.00000
+## Balanced Accuracy           0.84088         0.50000       0.50000
+##                      Class: greek Class: indian Class: irish
+## Sensitivity               0.00000       0.28476      0.00000
+## Specificity               1.00000       0.99286      1.00000
+## Pos Pred Value                NaN       0.76510          NaN
+## Neg Pred Value            0.97045       0.94442      0.98327
+## Prevalence                0.02955       0.07552      0.01673
+## Detection Rate            0.00000       0.02151      0.00000
+## Detection Prevalence      0.00000       0.02811      0.00000
+## Balanced Accuracy         0.50000       0.63881      0.50000
+##                      Class: italian Class: jamaican Class: japanese
+## Sensitivity                  0.7053         0.00000         0.00000
+## Specificity                  0.8517         1.00000         1.00000
+## Pos Pred Value               0.5387             NaN             NaN
+## Neg Pred Value               0.9217         0.98679         0.96422
+## Prevalence                   0.1971         0.01321         0.03578
+## Detection Rate               0.1390         0.00000         0.00000
+## Detection Prevalence         0.2581         0.00000         0.00000
+## Balanced Accuracy            0.7785         0.50000         0.50000
+##                      Class: korean Class: mexican Class: moroccan
+## Sensitivity                0.00000         0.6769         0.00000
+## Specificity                1.00000         0.9355         1.00000
+## Pos Pred Value                 NaN         0.6699             NaN
+## Neg Pred Value             0.97912         0.9374         0.97937
+## Prevalence                 0.02088         0.1619         0.02063
+## Detection Rate             0.00000         0.1096         0.00000
+## Detection Prevalence       0.00000         0.1636         0.00000
+## Balanced Accuracy          0.50000         0.8062         0.50000
+##                      Class: russian Class: southern_us Class: spanish
+## Sensitivity                 0.00000            0.84549        0.00000
+## Specificity                 1.00000            0.64480        1.00000
+## Pos Pred Value                  NaN            0.22491            NaN
+## Neg Pred Value              0.98774            0.97162        0.97516
+## Prevalence                  0.01226            0.10866        0.02484
+## Detection Rate              0.00000            0.09187        0.00000
+## Detection Prevalence        0.00000            0.40848        0.00000
+## Balanced Accuracy           0.50000            0.74514        0.50000
+##                      Class: thai Class: vietnamese
+## Sensitivity              0.36260           0.00000
+## Specificity              0.98411           1.00000
+## Pos Pred Value           0.47854               NaN
+## Neg Pred Value           0.97461           0.97925
+## Prevalence               0.03867           0.02075
+## Detection Rate           0.01402           0.00000
+## Detection Prevalence     0.02930           0.00000
+## Balanced Accuracy        0.67335           0.50000</code></pre>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
