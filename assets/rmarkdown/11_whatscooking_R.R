@@ -87,6 +87,8 @@ prp(cartModelFit)
 #This generates the class prediction.  
 cartPredict<-predict(cartModelFit, newdata = ingredientsDTM2, type = "class")
 
+str(ingredientsDTM)
+
 #This creates our final submission data frame. 
 submit2 <- data.frame(id = test$id, cuisine = cartPredict)
 
